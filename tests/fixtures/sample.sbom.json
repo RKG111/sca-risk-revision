@@ -1,0 +1,57 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "acme-payment-gateway",
+      "version": "1.0.0"
+    },
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "Synopsys",
+          "name": "Black Duck Hub",
+          "version": "2023.4.2"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pyyaml@5.4.1",
+      "publisher": "PyYAML",
+      "name": "pyyaml",
+      "version": "5.4.1",
+      "purl": "pkg:pypi/pyyaml@5.4.1"
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "bom-ref": "vuln-CVE-2022-1471",
+      "id": "CVE-2022-1471",
+      "source": {
+        "name": "NVD",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-1471"
+      },
+      "ratings": [
+        {
+          "source_name": "NVD",
+          "score": 9.8,
+          "severity": "critical",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "affects": [
+        {
+          "ref": "pkg:pypi/pyyaml@5.4.1"
+        }
+      ]
+    }
+  ]
+}
