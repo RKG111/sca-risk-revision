@@ -40,7 +40,11 @@ class Settings(BaseSettings):
     joern_auth_username: str = "user"
     joern_auth_password: str = "password"
     joern_timeout_seconds: int = 300
-    joern_workspace_path: str = "/app"
+    # Unused with native Joern (absolute host paths). Kept for env compatibility.
+    joern_workspace_path: str = ""
+    # Optional override for the joern binary (else PATH).
+    joern_bin: str = ""
+    joern_xmx: str = "4G"
 
     # ── mcp-joern (FastMCP SSE in front of Joern) ────────────────────────────
     mcp_joern_host: str = "127.0.0.1"
@@ -50,6 +54,8 @@ class Settings(BaseSettings):
     # ── Paths ────────────────────────────────────────────────────────────────
     blueprint_store_path: str = "./blueprints"
     codebase_root: str = "."
+    # Per-scan artefacts: metadata.json, report.json, conversations/*.json
+    scan_output_dir: str = "./runs"
 
     # ── API ──────────────────────────────────────────────────────────────────
     api_host: str = "127.0.0.1"
@@ -123,14 +129,24 @@ def write_generated_config() -> list[Path]:
 
     if _MCP_JOERN_DIR.is_dir():
         settings_path = _MCP_JOERN_DIR / "mcp_settings.json"
+        # Shape expected by third_party/mcp-joern/server.py::load_server_config
         settings_path.write_text(
             json.dumps(
                 {
                     "_generated_by": "python -m core.config",
-                    "host": settings.joern_host,
-                    "port": str(settings.joern_port),
-                    "username": settings.joern_auth_username,
-                    "password": settings.joern_auth_password,
+                    "mcpServers": {
+                        "joern": {
+                            "config": {
+                                "host": settings.joern_host,
+                                "port": str(settings.joern_port),
+                                "log_level": "ERROR",
+                                "timeout": str(settings.joern_timeout_seconds),
+                                "username": settings.joern_auth_username,
+                                "password": settings.joern_auth_password,
+                                "description": "Joern mcp server",
+                            }
+                        }
+                    },
                 },
                 indent=2,
             )

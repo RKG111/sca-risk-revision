@@ -488,6 +488,8 @@ class RiskAssessmentResult(BaseModel):
     plan: AssessmentPlan
     metric_answers: list[MetricAnswer] = Field(default_factory=list)
     evidence: EvidenceSet = Field(default_factory=EvidenceSet)
+    scan_id: Optional[str] = None
+    scan_dir: Optional[str] = None
     generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     @property

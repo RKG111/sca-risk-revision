@@ -5,6 +5,7 @@ Two families:
 
   * filesystem tools — read and search the codebase under assessment
   * mcp-joern tools  — CPG queries, exposed by the vendored MCP server
+  * local Joern helpers — simple-name call-site lookup (language-agnostic)
 
 Tools are built as closures over the target paths rather than reading module
 globals, so two assessments can never see each other's context.
@@ -15,6 +16,7 @@ To add another MCP server, add a connection in `_mcp_connections`.
 from __future__ import annotations
 
 import logging
+import re
 import shutil
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -31,6 +33,38 @@ _MAX_MATCHES = 25
 _MAX_FILES = 50
 
 
+def _relative_glob(
+    pattern: str,
+    *,
+    root: Path | None = None,
+    default: str = "**/*",
+) -> str:
+    """Force a pathlib-safe relative glob. Absolute patterns raise on Path.glob."""
+    raw = (pattern or "").strip() or default
+    raw = raw.replace("\\", "/")
+    if root is not None:
+        root_s = str(root.resolve()).replace("\\", "/").rstrip("/")
+        # Models often paste absolute paths under the codebase root.
+        for prefix in (root_s + "/", root_s):
+            if raw.startswith(prefix):
+                raw = raw[len(prefix) :].lstrip("/")
+                break
+            # Also match after a leading slash was already stripped elsewhere.
+            if raw.startswith(prefix.lstrip("/")):
+                raw = raw[len(prefix.lstrip("/")) :].lstrip("/")
+                break
+    # Strip absolute / drive prefixes the model often copies from codebase_path.
+    if raw.startswith("/"):
+        raw = raw.lstrip("/")
+    if re.match(r"^[A-Za-z]:[\\/]", raw):
+        raw = raw[2:].lstrip("\\/")
+    while raw.startswith("./"):
+        raw = raw[2:]
+    if not raw or raw == "/":
+        return default
+    return raw
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Filesystem tools
 # ─────────────────────────────────────────────────────────────────────────────
@@ -41,16 +75,30 @@ def file_tools(codebase: Path, product_docs: Path | None = None) -> list:
 
     @tool
     def find_files(pattern: str) -> str:
-        """Find files by glob pattern, e.g. '*.yml' or '*Dockerfile*'."""
-        matches = sorted(codebase.glob(f"**/{pattern}"))[:_MAX_FILES]
+        """Find files by relative glob pattern, e.g. '*.yml' or '*Dockerfile*'.
+
+        Patterns must be relative to the codebase root — do not pass absolute paths.
+        """
+        try:
+            rel = _relative_glob(pattern, root=codebase, default="**/*")
+            # Prefer recursive match when the model passes a bare extension glob.
+            query = rel if "**" in rel or rel.startswith("*/") else f"**/{rel}"
+            matches = sorted(codebase.glob(query))[:_MAX_FILES]
+        except (OSError, NotImplementedError, ValueError) as exc:
+            return f"Invalid pattern {pattern!r}: {exc}. Use a relative glob like '*.py'."
         if not matches:
             return f"No files matching '{pattern}'."
         return "\n".join(str(p.relative_to(codebase)) for p in matches)
 
     @tool
     def read_lines(relative_path: str, start_line: int = 1, end_line: int = 80) -> str:
-        """Read a 1-indexed inclusive line range from a file."""
-        target = codebase / relative_path
+        """Read a 1-indexed inclusive line range from a file relative to the codebase."""
+        rel = relative_path.lstrip("/")
+        target = (codebase / rel).resolve()
+        try:
+            target.relative_to(codebase.resolve())
+        except ValueError:
+            return f"Path escapes codebase: {relative_path}"
         if not target.is_file():
             return f"File not found: {relative_path}"
         lines = target.read_text(encoding="utf-8", errors="replace").splitlines()
@@ -60,9 +108,17 @@ def file_tools(codebase: Path, product_docs: Path | None = None) -> list:
 
     @tool
     def search_text(substring: str, file_glob: str = "**/*") -> str:
-        """Search for a literal substring across files matching a glob."""
+        """Search for a literal substring across files matching a relative glob."""
+        try:
+            query = _relative_glob(file_glob, root=codebase, default="**/*")
+            paths = list(codebase.glob(query))
+        except (OSError, NotImplementedError, ValueError) as exc:
+            return (
+                f"Invalid file_glob {file_glob!r}: {exc}. "
+                "Use a relative glob like '**/*.py' or '*.py'."
+            )
         matches: list[str] = []
-        for path in codebase.glob(file_glob):
+        for path in paths:
             if not path.is_file():
                 continue
             try:
@@ -102,6 +158,93 @@ def _docs_text(docs_path: Path, max_chars: int) -> str:
         chunks.append(f"### {path.relative_to(docs_path)}\n{text}")
         budget -= len(text)
     return "\n\n".join(chunks)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Local Joern helpers (simple-name lookup — works for Python/JS/etc.)
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def _joern_query_sync(cpgql: str) -> Any:
+    """Synchronous Joern /query-sync for use inside LangChain tools."""
+    auth = None
+    if settings.joern_auth_username:
+        auth = (settings.joern_auth_username, settings.joern_auth_password)
+    with httpx.Client(
+        base_url=settings.joern_base_url.rstrip("/"),
+        timeout=float(settings.joern_timeout_seconds),
+        auth=auth,
+    ) as client:
+        response = client.post("/query-sync", json={"query": cpgql})
+        response.raise_for_status()
+        data = response.json()
+        if data.get("success") is False:
+            raise RuntimeError(data.get("err") or data.get("stderr") or "query rejected")
+        if "stdout" in data:
+            return data["stdout"]
+        return data.get("response", data)
+
+
+def sink_discovery_tools() -> list:
+    """CPG tools that accept blueprint-style symbols (yaml.full_load), not JVM FQNs.
+
+    Prefer these for S1 over mcp-joern get_method_callers(...), which needs exact
+    Joern method full names and returns [] for dotted Python names.
+    """
+
+    @tool
+    def find_call_sites(symbol: str) -> str:
+        """Find CPG call sites for a sink symbol by simple method name.
+
+        Pass blueprint symbols such as 'yaml.full_load', 'yaml.load', or 'FullLoader'.
+        The last dotted segment is matched via cpg.call.name (language-agnostic).
+        Do not use get_method_callers with these names — that tool expects JVM FQNs.
+        """
+        symbol = (symbol or "").strip()
+        if not symbol:
+            return "symbol is required (e.g. yaml.full_load)"
+        method = symbol.split(".")[-1]
+        query = (
+            f'cpg.call.name("{method}").map(c => Map('
+            f'"file" -> c.file.name.headOption.getOrElse(""), '
+            f'"line" -> c.lineNumber.getOrElse(0), '
+            f'"code" -> c.code, '
+            f'"name" -> c.name'
+            f")).l"
+        )
+        try:
+            result = _joern_query_sync(query)
+        except Exception as exc:
+            return f"Joern query failed for {symbol!r}: {exc}"
+        text = str(result or "").strip()
+        if not text or ("List()" in text and "Map(" not in text):
+            return f"No call sites for {symbol!r} (matched cpg.call.name={method!r})."
+        return f"Call sites for {symbol!r} (name={method!r}):\n{text}"
+
+    @tool
+    def find_methods_named(symbol: str) -> str:
+        """List CPG methods whose simple name matches the last segment of symbol."""
+        symbol = (symbol or "").strip()
+        if not symbol:
+            return "symbol is required"
+        method = symbol.split(".")[-1]
+        query = (
+            f'cpg.method.name("{method}").map(m => Map('
+            f'"fullName" -> m.fullName, '
+            f'"filename" -> m.filename, '
+            f'"line" -> m.lineNumber.getOrElse(0)'
+            f")).l"
+        )
+        try:
+            result = _joern_query_sync(query)
+        except Exception as exc:
+            return f"Joern query failed for {symbol!r}: {exc}"
+        text = str(result or "").strip()
+        if not text or ("List()" in text and "Map(" not in text):
+            return f"No methods named {method!r}."
+        return f"Methods named {method!r}:\n{text}"
+
+    return [find_call_sites, find_methods_named]
 
 
 # ─────────────────────────────────────────────────────────────────────────────

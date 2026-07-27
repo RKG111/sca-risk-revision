@@ -30,6 +30,7 @@ from core.models import (
     MitigationEvidence,
     ProbeId,
 )
+from core.telemetry import ScanSession
 
 _PROMPTS = Path(__file__).parent / "prompts"
 
@@ -49,6 +50,7 @@ class ProbeContext:
     product_docs: Optional[Path] = None
     cpg_ready: bool = False
     exploit_paths: list[ExploitPath] = field(default_factory=list)
+    session: Optional[ScanSession] = None
 
 
 @dataclass(frozen=True)
@@ -75,10 +77,20 @@ def _json_block(payload: dict) -> str:
 
 def _exploit_path_context(ctx: ProbeContext) -> str:
     blueprint = ctx.blueprint
+    cpg_block = ""
+    cpg = ctx.session.extra.get("cpg") if ctx.session else None
+    if isinstance(cpg, dict) and cpg.get("indexed"):
+        cpg_block = f"""
+## CPG index (already built for this scan)
+- path: {cpg.get("path")}
+- files: {cpg.get("file_count")} methods: {cpg.get("method_count")} calls: {cpg.get("call_count")}
+- sample files: {cpg.get("sample_files")}
+Call check_connection, then query call sites / flows. Do not skip tools.
+"""
     return f"""## Target
 Codebase: {ctx.codebase}
-Joern CPG already built: {ctx.cpg_ready}
-
+Joern CPG: ready (required for this probe)
+{cpg_block}
 ## Blueprint
 {_json_block({
     "cve_id": blueprint.cve_id,
@@ -88,7 +100,7 @@ Joern CPG already built: {ctx.cpg_ready}
     "affected_features": blueprint.affected_features,
 })}
 
-Find every exploit path to the listed sinks. Return ExploitPathEvidence JSON only.
+Find every exploit path to the listed sinks using CPG tools. Return ExploitPathEvidence JSON only.
 """
 
 
@@ -190,6 +202,7 @@ async def run_probe(
         tools=tools,
         output_model=probe.output_model,
         model=model,
+        session=ctx.session,
     )
 
 

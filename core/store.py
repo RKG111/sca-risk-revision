@@ -14,6 +14,7 @@ import re
 from pathlib import Path
 from typing import Optional
 
+from core.errors import BlueprintNotFound
 from core.models import Blueprint
 
 logger = logging.getLogger(__name__)
@@ -72,6 +73,17 @@ def package_tokens(purl: str, component_name: str | None = None) -> list[str]:
         seen.add(token.lower())
         tokens.append(token)
     return tokens
+
+
+def load_blueprint(path: str | Path) -> Blueprint:
+    """Load and validate one blueprint JSON file."""
+    path = Path(path)
+    if not path.is_file():
+        raise BlueprintNotFound(f"blueprint file not found: {path}")
+    try:
+        return Blueprint.model_validate(json.loads(path.read_text(encoding="utf-8")))
+    except Exception as exc:
+        raise BlueprintNotFound(f"invalid blueprint at {path}: {exc}") from exc
 
 
 class BlueprintStore:

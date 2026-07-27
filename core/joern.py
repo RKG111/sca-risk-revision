@@ -5,14 +5,14 @@ Joern is reached over its `/query-sync` HTTP API with basic auth. Agents reach
 the same server through mcp-joern tools (see llm.py) — that is a different
 transport to the same place, not a second client.
 
-Paths must be container-internal: the repo is bind-mounted into the Joern
-container at `JOERN_WORKSPACE_PATH`, so host paths are translated by
-`to_container_path`.
+Native Joern uses host filesystem paths. `to_joern_path` always returns an
+absolute host path.
 """
 
 from __future__ import annotations
 
 import logging
+import re
 from pathlib import Path
 from typing import Any, Optional
 
@@ -26,16 +26,13 @@ from core.store import package_tokens
 logger = logging.getLogger(__name__)
 
 
-def to_container_path(host_path: Path | str) -> str:
-    """Map a host path to its location inside the Joern container."""
-    host = Path(host_path).resolve()
-    workspace = settings.joern_workspace_path.rstrip("/") or "/app"
-    try:
-        relative = host.relative_to(Path(settings.codebase_root).resolve())
-    except ValueError:
-        raw = str(host_path)
-        return raw if raw.startswith(f"{workspace}/") else f"{workspace}/{host.name}"
-    return f"{workspace}/{relative.as_posix()}"
+def to_joern_path(host_path: Path | str) -> str:
+    """Absolute path for Joern `importCode` (native / host Joern)."""
+    return Path(host_path).resolve().as_posix()
+
+
+# Back-compat alias used by older call sites / docs.
+to_container_path = to_joern_path
 
 
 class Joern:
@@ -79,12 +76,40 @@ class Joern:
             return data["stdout"]
         return data.get("response", data)
 
-    async def import_code(self, host_path: Path | str) -> str:
-        """Build a CPG for a codebase. Returns the container path used."""
-        container_path = to_container_path(host_path)
-        await self.query(f'importCode("{container_path}")')
-        logger.info("Built CPG for %s", container_path)
-        return container_path
+    async def import_code(self, host_path: Path | str) -> dict[str, Any]:
+        """Build a CPG for a codebase and verify it is non-empty.
+
+        Returns a dict with path and basic CPG stats for scan metadata.
+        """
+        joern_path = to_joern_path(host_path)
+        logger.info("Joern importCode(%s) …", joern_path)
+        await self.query(f'importCode("{joern_path}")')
+
+        file_count = _as_int(await self.query("cpg.file.size"))
+        method_count = _as_int(await self.query("cpg.method.size"))
+        call_count = _as_int(await self.query("cpg.call.size"))
+        sample_files = await self.query("cpg.file.name.l")
+
+        info = {
+            "path": joern_path,
+            "file_count": file_count,
+            "method_count": method_count,
+            "call_count": call_count,
+            "sample_files": _as_string_list(sample_files)[:20],
+        }
+        logger.info(
+            "CPG ready for %s: files=%s methods=%s calls=%s",
+            joern_path,
+            file_count,
+            method_count,
+            call_count,
+        )
+        if file_count <= 0 and method_count <= 0:
+            raise JoernUnavailable(
+                f"importCode produced an empty CPG for {joern_path} "
+                f"(files={file_count}, methods={method_count})"
+            )
+        return info
 
     async def call_sites(self, symbol: str) -> list[dict]:
         """Every call site of a symbol. The only place this query is written."""
@@ -114,6 +139,32 @@ class Joern:
         return records
 
 
+def _as_int(result: Any) -> int:
+    """Parse Joern size/count replies (raw int, or REPL stdout text)."""
+    if isinstance(result, bool):
+        return int(result)
+    if isinstance(result, int):
+        return result
+    if isinstance(result, float):
+        return int(result)
+    text = str(result or "")
+    matches = re.findall(r"-?\d+", text)
+    return int(matches[-1]) if matches else 0
+
+
+def _as_string_list(result: Any) -> list[str]:
+    if isinstance(result, list):
+        return [str(x) for x in result]
+    text = str(result or "").strip()
+    if not text or text in ("List()", "List()"):
+        return []
+    # Rough parse of Scala List("a", "b") / newline dumps
+    parts = re.findall(r'"([^"]+)"', text)
+    if parts:
+        return parts
+    return [line.strip() for line in text.splitlines() if line.strip()][:20]
+
+
 def _as_records(result: Any, symbol: str) -> list[dict]:
     """Normalise Joern's list-of-maps or raw-REPL-string reply into records."""
     if isinstance(result, dict):
@@ -141,8 +192,8 @@ def _as_records(result: Any, symbol: str) -> list[dict]:
     return records
 
 
-async def index_codebase(host_path: Path | str) -> Optional[str]:
-    """Build a CPG if Joern is up. Returns the container path, or None."""
+async def index_codebase(host_path: Path | str) -> Optional[dict[str, Any]]:
+    """Build a CPG if Joern is up. Returns CPG info, or None if Joern is down."""
     async with Joern() as joern:
         if not await joern.is_up():
             logger.info("Joern is not reachable at %s", settings.joern_base_url)

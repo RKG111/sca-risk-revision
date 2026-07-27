@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Standalone product stack: Ollama + Joern + mcp-joern (FastMCP SSE) + FastAPI
+# Standalone product stack: Ollama + native Joern + mcp-joern (FastMCP SSE) + FastAPI
 #
 # Usage:
 #   ./scripts/stack.sh start
@@ -7,8 +7,8 @@
 #   ./scripts/stack.sh status
 #   ./scripts/stack.sh logs
 #
-# mcp-joern runs as FastMCP SSE HTTP (default :8001) so Qwen connects over HTTP.
-# Joern JVM remains on :16162.
+# Joern runs as a host process (requires `joern` on PATH).
+# mcp-joern runs as FastMCP SSE HTTP (default :8001) so the agent connects over HTTP.
 
 set -euo pipefail
 
@@ -46,30 +46,12 @@ OLLAMA_PID_FILE="${RUN_DIR}/ollama.pid"
 OLLAMA_LOG_FILE="${RUN_DIR}/ollama.log"
 MCP_PID_FILE="${RUN_DIR}/mcp_joern.pid"
 MCP_LOG_FILE="${RUN_DIR}/mcp_joern.log"
+JOERN_PID_FILE="${RUN_DIR}/joern.pid"
+JOERN_LOG_FILE="${RUN_DIR}/joern.log"
 
 log() { echo "[stack] $*"; }
 ok()  { echo "[stack] OK  $*"; }
 bad() { echo "[stack] FAIL $*"; }
-
-require_docker() {
-  if docker info >/dev/null 2>&1; then
-    return 0
-  fi
-  bad "cannot talk to Docker"
-  if [[ -S /var/run/docker.sock ]]; then
-    echo "  Docker is running but this shell cannot access it."
-    if getent group docker 2>/dev/null | grep -qE "(^|:)${USER}(,|$)"; then
-      echo "  You are in the docker group, but this shell needs a refresh:"
-      echo "    newgrp docker"
-      echo "    # or: sg docker -c './scripts/stack.sh start'"
-    else
-      echo "  Fix (one-time): sudo usermod -aG docker \"\$USER\" && newgrp docker"
-    fi
-  else
-    echo "  Start the Docker daemon first."
-  fi
-  exit 1
-}
 
 ollama_base() {
   echo "http://${OLLAMA_HOST}:${OLLAMA_PORT}"
@@ -143,12 +125,15 @@ joern_ready() {
 }
 
 ensure_joern() {
-  require_docker
+  if ! command -v joern >/dev/null 2>&1 && [[ -z "${JOERN_BIN:-}" ]]; then
+    bad "joern not found on PATH (install to /opt/joern or set JOERN_BIN)"
+    exit 1
+  fi
   if joern_ready; then
     ok "Joern already up at ${JOERN_HOST}:${JOERN_PORT}"
     return 0
   fi
-  log "starting Joern via ./joern-run.sh --detach"
+  log "starting native Joern via ./joern-run.sh --detach"
   "${ROOT}/joern-run.sh" --detach
   local i=0
   while (( i < JOERN_WAIT_SECS )); do
@@ -160,7 +145,7 @@ ensure_joern() {
     ((i+=2)) || true
   done
   bad "Joern did not become ready within ${JOERN_WAIT_SECS}s"
-  echo "  Check: docker logs sca-joern"
+  echo "  Check: ${JOERN_LOG_FILE}"
   exit 1
 }
 
@@ -191,8 +176,14 @@ ensure_mcp_joern() {
     fi
   fi
 
+  # Keep mcp_settings.json in the shape mcp-joern/server.py expects.
+  if [[ -x "${ROOT}/.venv/bin/python" ]]; then
+    "${ROOT}/.venv/bin/python" -m core.config >/dev/null
+  fi
+
   log "starting mcp-joern FastMCP SSE on ${MCP_JOERN_HOST}:${MCP_JOERN_PORT}"
   export JOERN_AUTH_USERNAME JOERN_AUTH_PASSWORD
+  export JOERN_HOST JOERN_PORT
   export MCP_JOERN_HOST MCP_JOERN_PORT
   nohup "${runner_py}" "${ROOT}/scripts/run_mcp_joern_sse.py" \
     >"${MCP_LOG_FILE}" 2>&1 &
@@ -204,10 +195,17 @@ ensure_mcp_joern() {
       ok "mcp-joern SSE ready pid=$(cat "${MCP_PID_FILE}")"
       return 0
     fi
+    # Bail early if the process already died (misconfig, import error, …).
+    if [[ -f "${MCP_PID_FILE}" ]] && ! kill -0 "$(cat "${MCP_PID_FILE}")" 2>/dev/null; then
+      bad "mcp-joern exited early — see ${MCP_LOG_FILE}"
+      tail -n 20 "${MCP_LOG_FILE}" 2>/dev/null || true
+      exit 1
+    fi
     sleep 1
     ((i++)) || true
   done
   bad "mcp-joern SSE did not become ready — see ${MCP_LOG_FILE}"
+  tail -n 20 "${MCP_LOG_FILE}" 2>/dev/null || true
   exit 1
 }
 
@@ -224,8 +222,8 @@ api_running() {
 
 ensure_api() {
   if api_running; then
-    ok "API already running pid=$(cat "${API_PID_FILE}")"
-    return 0
+    log "restarting API (reload enabled) pid=$(cat "${API_PID_FILE}")"
+    _stop_pidfile "API" "${API_PID_FILE}"
   fi
 
   local uvicorn_bin="${ROOT}/.venv/bin/uvicorn"
@@ -239,10 +237,13 @@ ensure_api() {
   export MCP_JOERN_HOST MCP_JOERN_PORT
   export PYTHONPATH="${ROOT}${PYTHONPATH:+:$PYTHONPATH}"
 
-  log "starting API on ${API_HOST}:${API_PORT}"
+  log "starting API on ${API_HOST}:${API_PORT} (--reload)"
   nohup "${uvicorn_bin}" api.main:app \
     --host "${API_HOST}" \
     --port "${API_PORT}" \
+    --reload \
+    --reload-dir "${ROOT}/api" \
+    --reload-dir "${ROOT}/core" \
     >"${API_LOG_FILE}" 2>&1 &
   echo $! >"${API_PID_FILE}"
 
@@ -278,7 +279,7 @@ _stop_pidfile() {
 }
 
 cmd_start() {
-  log "starting stack (Ollama + Joern + mcp-joern FastMCP SSE + API)"
+  log "starting stack (Ollama + native Joern + mcp-joern FastMCP SSE + API)"
   ensure_ollama
   ensure_joern
   ensure_mcp_joern
@@ -290,10 +291,7 @@ cmd_stop() {
   log "stopping stack"
   _stop_pidfile "API" "${API_PID_FILE}"
   _stop_pidfile "mcp-joern" "${MCP_PID_FILE}"
-
-  if [[ -x "${ROOT}/joern-run.sh" ]]; then
-    "${ROOT}/joern-run.sh" --stop || true
-  fi
+  "${ROOT}/joern-run.sh" --stop || true
 
   if [[ "${STACK_STOP_OLLAMA}" == "1" ]]; then
     _stop_pidfile "ollama" "${OLLAMA_PID_FILE}"
@@ -307,10 +305,10 @@ cmd_stop() {
 cmd_status() {
   echo "=== stack status ==="
 
-  if docker info >/dev/null 2>&1; then
-    ok "docker"
+  if command -v joern >/dev/null 2>&1 || [[ -n "${JOERN_BIN:-}" ]]; then
+    ok "joern-bin $(command -v joern 2>/dev/null || echo "${JOERN_BIN}")"
   else
-    bad "docker"
+    bad "joern-bin not on PATH"
   fi
 
   if joern_ready; then
@@ -345,8 +343,8 @@ cmd_logs() {
   echo "=== mcp-joern log (${MCP_LOG_FILE}) ==="
   tail -n 40 "${MCP_LOG_FILE}" 2>/dev/null || echo "(no mcp-joern log)"
   echo
-  echo "=== Joern container logs ==="
-  docker logs --tail 40 sca-joern 2>/dev/null || echo "(no sca-joern container)"
+  echo "=== Joern log (${JOERN_LOG_FILE}) ==="
+  tail -n 40 "${JOERN_LOG_FILE}" 2>/dev/null || echo "(no joern log)"
   if [[ -f "${OLLAMA_LOG_FILE}" ]]; then
     echo
     echo "=== Ollama log (${OLLAMA_LOG_FILE}) ==="
@@ -358,24 +356,19 @@ usage() {
   cat <<EOF
 Usage: $0 {start|stop|status|logs}
 
-  start   Ollama + Joern + mcp-joern (FastMCP SSE) + API
+  start   Ollama + native Joern + mcp-joern (FastMCP SSE) + API (--reload)
   stop    Stop API + mcp-joern + Joern (Ollama kept unless STACK_STOP_OLLAMA=1)
   status  Health checks
   logs    Tail service logs
+
+Dashed forms (--start, --status, …) are accepted too.
 EOF
 }
 
 main() {
   local cmd="${1:-}"
-
-  # If docker group is configured but not active in this shell, re-exec under sg.
-  if [[ "${STACK_DOCKER_SG:-}" != "1" ]] \
-     && ! docker info >/dev/null 2>&1 \
-     && getent group docker 2>/dev/null | grep -qE "(^|:)${USER}(,|$)" \
-     && sg docker -c 'docker info' >/dev/null 2>&1; then
-    log "docker group inactive in this shell — re-exec via sg docker"
-    exec env STACK_DOCKER_SG=1 sg docker -c "\"$0\" $*"
-  fi
+  # Allow ./scripts/stack.sh --status as well as status
+  cmd="${cmd#--}"
 
   case "${cmd}" in
     start)  cmd_start ;;

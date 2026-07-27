@@ -22,10 +22,23 @@ if str(ROOT) not in sys.path:
 # developer's local .env.
 os.environ.setdefault("CODEBASE_ROOT", str(ROOT))
 os.environ.setdefault("BLUEPRINT_STORE_PATH", str(ROOT / "blueprints"))
-os.environ.setdefault("JOERN_WORKSPACE_PATH", "/app")
+os.environ.setdefault("JOERN_WORKSPACE_PATH", "")
+os.environ.setdefault("SCAN_OUTPUT_DIR", str(ROOT / "tests" / "results" / "runs"))
 
 
 BASELINE_CVE = "CVE-2020-14343"
+
+
+@pytest.fixture(autouse=True)
+def _isolate_scan_output(tmp_path, monkeypatch):
+    """Keep per-scan artefacts out of the repo during tests."""
+    runs = tmp_path / "runs"
+    runs.mkdir()
+    monkeypatch.setenv("SCAN_OUTPUT_DIR", str(runs))
+    from core.config import settings
+
+    monkeypatch.setattr(settings, "scan_output_dir", str(runs))
+    return runs
 
 
 @pytest.fixture(scope="session")

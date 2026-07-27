@@ -15,5 +15,7 @@ third_party/mcp-joern/.env
 *.swp
 .DS_Store
 .run/
+runs/
+report/
 
 tests/results/

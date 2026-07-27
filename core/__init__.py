@@ -13,6 +13,7 @@ One flat package, one concept per module:
     probes.py     the four evidence questions
     policy.py     the only code that decides activation and exploitability
     scoring.py    CVSS environmental scoring
+    telemetry.py  per-scan conversation logs, token usage, metadata.json
     pipeline.py   wiring, and the only entry point callers need
 
 The pipeline is agent-only on purpose: evidence comes from an LLM with tools,

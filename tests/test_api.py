@@ -105,6 +105,80 @@ def test_a_malformed_request_is_422(client):
     assert client.post("/api/v1/analyze", json={"cve_id": "CVE-1"}).status_code == 422
 
 
+def test_analyze_blueprint_writes_under_codebase_report(
+    client, sample_codebase, repo_root, monkeypatch, baseline_cve, tmp_path
+):
+    """Blueprint+codebase path assessment stores artefacts in <codebase>/report/."""
+    codebase = tmp_path / "app"
+    codebase.mkdir()
+    blueprint_path = repo_root / "blueprints" / "CVE-2020-14343_pkg-pypi-pyyaml@5.3.1.json"
+    if not blueprint_path.is_file():
+        # Fall back to any known blueprint under blueprints/
+        candidates = list((repo_root / "blueprints").glob("*.json"))
+        assert candidates, "no blueprint fixtures available"
+        blueprint_path = candidates[0]
+
+    async def fake_assess(**kwargs):
+        assert kwargs["blueprint"].cve_id
+        assert kwargs["codebase_path"] == codebase
+        assert kwargs["scan_output_root"] == codebase / "report"
+        assert kwargs["use_llm_adjudicator"] is True
+        # Mimic pipeline writing into the requested root.
+        from core.telemetry import ScanSession
+
+        session = ScanSession.create(
+            cve_id=kwargs["blueprint"].cve_id,
+            component_purl="pkg:pypi/pyyaml@5.3.1",
+            codebase_path=str(codebase),
+            scan_id=kwargs["scan_id"],
+            output_root=kwargs["scan_output_root"],
+        )
+        report = a_report(kwargs["blueprint"].cve_id)
+        report = report.model_copy(
+            update={"scan_id": session.scan_id, "scan_dir": str(session.root)}
+        )
+        session.finish(status="completed", report=report)
+        return report
+
+    monkeypatch.setattr("api.main.assess", fake_assess)
+
+    accepted = client.post(
+        "/api/v1/analyze/blueprint",
+        json={
+            "blueprint_path": str(blueprint_path),
+            "codebase_path": str(codebase),
+        },
+    )
+    assert accepted.status_code == 202
+    body = accepted.json()
+    assert body["report_dir"] == str(codebase / "report")
+    job_id = body["job_id"]
+
+    status = client.get(f"/api/v1/reports/{job_id}").json()
+    assert status["status"] == "completed"
+    assert status["report_dir"] == str(codebase / "report")
+    assert (codebase / "report" / "metadata.json").is_file()
+    assert (codebase / "report" / "report.json").is_file()
+
+
+def test_analyze_blueprint_missing_paths_fail_the_job(client, monkeypatch):
+    async def unreached(**_kwargs):  # pragma: no cover
+        raise AssertionError("assess should not be reached")
+
+    monkeypatch.setattr("api.main.assess", unreached)
+
+    job_id = client.post(
+        "/api/v1/analyze/blueprint",
+        json={
+            "blueprint_path": "/no/such/blueprint.json",
+            "codebase_path": "/no/such/codebase",
+        },
+    ).json()["job_id"]
+    body = client.get(f"/api/v1/reports/{job_id}").json()
+    assert body["status"] == "failed"
+    assert "does not exist" in body["error"]
+
+
 def test_a_nonexistent_codebase_path_fails_the_job(client, payload, monkeypatch):
     async def unreached(**_kwargs):  # pragma: no cover
         raise AssertionError("assess should not be reached")

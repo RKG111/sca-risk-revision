@@ -22,7 +22,11 @@ environmental CVSS. Standalone stack, not Cursor-driven. LLM = Ollama
   against one version says nothing about another.
 - Blueprints are probe-agnostic cached research JSON under `blueprints/`.
 - Agents reach Joern through mcp-joern FastMCP SSE; the service uses Joern's HTTP
-  API for its own lookups. Two transports, one server, neither a fallback.
+  API for its own lookups. Two transports, one **native** Joern process (no Docker).
+- **Joern is mandatory for CPG-backed work.** Invocation, hybrid, and inclusion
+  hard-fail if Joern/CPG (or mcp-joern tools for S1) are unavailable. There is
+  no filesystem/regex downgrade. Configuration- and environment-only plans may
+  still run without Joern.
 - CR/IR/AR default to High until product criticality is ingested.
 
 ## Pipeline
@@ -30,11 +34,17 @@ environmental CVSS. Standalone stack, not Cursor-driven. LLM = Ollama
 1. Resolve the affected PURL from the CycloneDX `affects` reference
 2. Load the `Blueprint` from the store
 3. `policy.plan` → activation basis and the probes that can establish it
-4. Best-effort Joern CPG import; a CPG sink pre-flight decides whether S1 is worth asking
+4. Joern CPG import when the plan needs it (hard-fail if unavailable); sink
+   pre-flight decides whether S1 is worth asking
 5. Run probes in dependency waves: S1/S2/S3 together, then S4 if S1 found paths
 6. `policy.decide` → one `RiskVerdict`
 7. `scoring.adjudicate` → metric answers, with policy clamps applied last
 8. `scoring.score` → environmental CVSS → `RiskAssessmentResult`
+
+Every assess writes scan artefacts (full agent↔LLM transcripts under
+`conversations/`, plus `metadata.json` and `report.json`). Default location is
+`runs/<scan_id>/`. `POST /api/v1/analyze/blueprint` writes them to
+`<codebase>/report/` instead.
 
 ## Testing
 

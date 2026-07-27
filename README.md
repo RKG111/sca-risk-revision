@@ -73,10 +73,10 @@ cp .env.example .env
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# One-time, so Joern's container is reachable:
-#   sudo usermod -aG docker "$USER" && newgrp docker
+# Joern must be installed on the host (not Docker), e.g.:
+#   https://github.com/joernio/joern/releases  →  joern on PATH (/usr/local/bin/joern)
 
-./scripts/stack.sh start     # Ollama + Joern + mcp-joern + API
+./scripts/stack.sh start     # Ollama + native Joern + mcp-joern + API
 ./scripts/stack.sh status
 ```
 
@@ -104,9 +104,9 @@ curl http://localhost:8000/api/v1/reports/{job_id}
 | Service | Role |
 |---|---|
 | Ollama | The model behind the probes and CVSS adjudication |
-| Joern | CPG server on `:16162`, started by `joern-run.sh` |
+| Joern | Native CPG server on `:16162` (`joern` on PATH via `joern-run.sh`) |
 | mcp-joern | FastMCP SSE on `:8001/sse`, exposing CPG tools to agents |
-| FastAPI | `/api/v1/analyze`, `/api/v1/reports/{id}` |
+| FastAPI | `/api/v1/analyze`, `/api/v1/analyze/blueprint`, `/api/v1/reports/{id}` |
 
 `core/joern.py` and mcp-joern are two transports to the same Joern server: the
 service uses HTTP for its own lookups, agents use MCP tools. Neither is a

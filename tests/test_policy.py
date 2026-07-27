@@ -88,10 +88,42 @@ class TestPlan:
         assert result.activation_basis is ActivationBasis.INCLUSION
         assert result.presence_check is True
 
+    def test_malicious_exploit_type_means_inclusion(self):
+        result = plan(blueprint(exploit_type="supply chain compromise with malicious payload"))
+        assert result.activation_basis is ActivationBasis.INCLUSION
+        assert result.presence_check is True
+        assert result.probes == []
+
+    def test_inclusion_with_deployment_conditions_still_runs_deployment(self):
+        result = plan(
+            blueprint(cwe_ids=["CWE-506"], conditions=[ConditionType.NETWORK_ACCESS])
+        )
+        assert result.activation_basis is ActivationBasis.INCLUSION
+        assert result.presence_check is True
+        assert result.probes == [ProbeId.DEPLOYMENT]
+
     def test_deployment_only_means_environment(self):
         result = plan(blueprint(conditions=[ConditionType.NETWORK_ACCESS]))
         assert result.activation_basis is ActivationBasis.ENVIRONMENT
         assert result.probes == [ProbeId.DEPLOYMENT]
+
+    def test_hybrid_with_deployment_includes_all_needed_probes(self):
+        result = plan(
+            blueprint(
+                sinks=["danger"],
+                conditions=[
+                    ConditionType.CONFIGURATION_REQUIREMENT,
+                    ConditionType.NETWORK_ACCESS,
+                ],
+            )
+        )
+        assert result.activation_basis is ActivationBasis.HYBRID
+        assert set(result.probes) == {
+            ProbeId.EXPLOIT_PATH,
+            ProbeId.MITIGATION,
+            ProbeId.MISCONFIG,
+            ProbeId.DEPLOYMENT,
+        }
 
     def test_reachability_claim_without_sinks_is_unknown(self):
         """An incomplete blueprint must not be rescored on a guess."""
@@ -192,6 +224,94 @@ class TestDecide:
         assert verdict.activation_state is ActivationState.NOT_ACTIVATED
         assert verdict.exploitable is False
 
+    def test_configuration_unsafe_finding_activates(self):
+        assessment = plan(blueprint(conditions=[ConditionType.CONFIGURATION_REQUIREMENT]))
+        evidence = EvidenceSet(
+            misconfigurations=[
+                MisconfigurationFinding(
+                    finding_id="m1", description="unsafe mode", relevant_to_cve=True
+                )
+            ],
+            ran=[ProbeId.MISCONFIG],
+        )
+        verdict = decide(assessment, evidence)
+        assert verdict.activation_state is ActivationState.ACTIVATED
+        assert verdict.exploitable is True
+
+    def test_configuration_clean_search_is_not_activated(self):
+        assessment = plan(blueprint(conditions=[ConditionType.CONFIGURATION_REQUIREMENT]))
+        verdict = decide(assessment, EvidenceSet(ran=[ProbeId.MISCONFIG]))
+        assert verdict.activation_state is ActivationState.NOT_ACTIVATED
+        assert verdict.exploitable is False
+
+    def test_configuration_without_running_misconfig_is_inconclusive(self):
+        assessment = plan(blueprint(conditions=[ConditionType.CONFIGURATION_REQUIREMENT]))
+        verdict = decide(assessment, EvidenceSet())
+        assert verdict.activation_state is ActivationState.INCONCLUSIVE
+
+    def test_environment_applies_when_deployment_says_so(self):
+        assessment = plan(blueprint(conditions=[ConditionType.NETWORK_ACCESS]))
+        evidence = EvidenceSet(
+            deployment_findings=[
+                DeploymentFinding(
+                    finding_id="d1",
+                    condition_type=ConditionType.NETWORK_ACCESS,
+                    description="public",
+                    applies=True,
+                )
+            ],
+            ran=[ProbeId.DEPLOYMENT],
+        )
+        assert decide(assessment, evidence).activation_state is ActivationState.ACTIVATED
+
+    def test_environment_without_applicable_finding_is_inconclusive(self):
+        """No applies=True is not proof of safety — only that we lack a positive signal."""
+        assessment = plan(blueprint(conditions=[ConditionType.NETWORK_ACCESS]))
+        evidence = EvidenceSet(
+            deployment_findings=[
+                DeploymentFinding(
+                    finding_id="d1",
+                    condition_type=ConditionType.NETWORK_ACCESS,
+                    description="unclear",
+                    applies=False,
+                )
+            ],
+            ran=[ProbeId.DEPLOYMENT],
+        )
+        assert decide(assessment, evidence).activation_state is ActivationState.INCONCLUSIVE
+
+    def test_environment_probe_never_ran_is_inconclusive(self):
+        assessment = plan(blueprint(conditions=[ConditionType.NETWORK_ACCESS]))
+        assert decide(assessment, EvidenceSet()).activation_state is ActivationState.INCONCLUSIVE
+
+    def test_inclusion_imported_is_activated(self):
+        from core.models import PresenceEvidence
+
+        assessment = plan(blueprint(cwe_ids=["CWE-506"]))
+        evidence = EvidenceSet(
+            presence=PresenceEvidence(imported=True, tokens=["thing"], hit_count=1)
+        )
+        verdict = decide(assessment, evidence)
+        assert verdict.activation_state is ActivationState.ACTIVATED
+        assert verdict.exploitable is True
+
+    def test_inclusion_not_imported_is_not_activated(self):
+        from core.models import PresenceEvidence
+
+        assessment = plan(blueprint(cwe_ids=["CWE-506"]))
+        evidence = EvidenceSet(
+            presence=PresenceEvidence(imported=False, tokens=["thing"], hit_count=0)
+        )
+        verdict = decide(assessment, evidence)
+        assert verdict.activation_state is ActivationState.NOT_ACTIVATED
+        assert verdict.exploitable is False
+
+    def test_inclusion_without_presence_evidence_is_inconclusive(self):
+        assessment = plan(blueprint(cwe_ids=["CWE-506"]))
+        verdict = decide(assessment, EvidenceSet())
+        assert verdict.activation_state is ActivationState.INCONCLUSIVE
+        assert verdict.exploitable is False
+
     def test_hybrid_needs_both_paths_and_unsafe_config(self):
         assessment = plan(
             blueprint(sinks=["danger"], conditions=[ConditionType.CONFIGURATION_REQUIREMENT])
@@ -251,6 +371,10 @@ class TestClamps:
             self._verdict(ActivationState.ACTIVATED, fully_mitigated=True), EvidenceSet()
         )
         assert {c.metric for c in forced} == {"MC", "MI", "MA"}
+
+    def test_skipped_zeroes_impact_when_clamps_run(self):
+        forced = clamps(self._verdict(ActivationState.SKIPPED), EvidenceSet())
+        assert {c.metric: c.value for c in forced} == {"MC": "N", "MI": "N", "MA": "N"}
 
     def test_inconclusive_does_not_zero_impact(self):
         """Not knowing must not silently look like knowing there is no risk."""

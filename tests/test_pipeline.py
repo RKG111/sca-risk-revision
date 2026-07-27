@@ -13,10 +13,12 @@ from contextlib import asynccontextmanager
 import pytest
 
 from core import pipeline
-from core.errors import BlueprintNotFound, CoreError
+from core.errors import BlueprintNotFound, CoreError, JoernUnavailable
 from core.models import (
     ActivationState,
+    ConditionType,
     CycloneDXSBOM,
+    PresenceEvidence,
     ProbeId,
     Severity,
 )
@@ -94,7 +96,39 @@ ALL_PAYLOADS = {"S1": S1_PAYLOAD, "S2": S2_PAYLOAD, "S3": S3_PAYLOAD, "S4": S4_P
 
 @pytest.fixture
 def offline(monkeypatch):
-    """Stub the Joern CPG and the MCP toolbelt so gather() runs offline."""
+    """Stub Joern as available so CPG-backed plans can run offline with scripted agents."""
+    from langchain_core.tools import tool
+
+    @tool
+    def joern_stub() -> str:
+        """Offline stand-in for an mcp-joern CPG tool."""
+        return "offline stub"
+
+    @asynccontextmanager
+    async def fake_cpg_tools():
+        yield [joern_stub]
+
+    async def fake_index(_path):
+        return {
+            "indexed": True,
+            "path": "/tmp/sample",
+            "file_count": 1,
+            "method_count": 1,
+            "call_count": 1,
+            "sample_files": ["app.py"],
+        }
+
+    async def sinks_present(_evidence, _blueprint):
+        return True
+
+    monkeypatch.setattr(pipeline, "joern_mcp_tools", fake_cpg_tools)
+    monkeypatch.setattr(pipeline, "_try_index", fake_index)
+    monkeypatch.setattr(pipeline, "_sinks_worth_probing", sinks_present)
+
+
+@pytest.fixture
+def no_joern(monkeypatch):
+    """Stub Joern/MCP as fully unavailable."""
 
     @asynccontextmanager
     async def no_cpg_tools():
@@ -192,6 +226,104 @@ class TestGather:
         assert evidence.ran == []
         assert evidence.exploit_paths == []
 
+    async def test_inclusion_without_cpg_raises_instead_of_guessing(
+        self, no_joern, sample_codebase
+    ):
+        """Accuracy policy: presence needs Joern; no regex soft-pass."""
+        blueprint = make_blueprint(cwe_ids=["CWE-506"])
+        with pytest.raises(JoernUnavailable, match="requires a Joern CPG"):
+            await pipeline.gather(
+                blueprint=blueprint,
+                plan=plan(blueprint),
+                codebase_path=sample_codebase,
+                model=ProbeScriptedChatModel(payloads=ALL_PAYLOADS),
+            )
+
+    async def test_invocation_without_joern_raises_instead_of_filesystem_fallback(
+        self, no_joern, sample_codebase
+    ):
+        blueprint = make_blueprint(sinks=["yaml.full_load"])
+        with pytest.raises(JoernUnavailable, match="requires a Joern CPG"):
+            await pipeline.gather(
+                blueprint=blueprint,
+                plan=plan(blueprint),
+                codebase_path=sample_codebase,
+                model=ProbeScriptedChatModel(payloads=ALL_PAYLOADS),
+            )
+
+    async def test_invocation_without_mcp_tools_raises(self, monkeypatch, sample_codebase):
+        @asynccontextmanager
+        async def empty_mcp():
+            yield []
+
+        async def fake_index(_path):
+            return {"indexed": True, "path": "/tmp/sample", "file_count": 1, "method_count": 1, "call_count": 1, "sample_files": ["app.py"]}
+
+        async def sinks_present(_evidence, _blueprint):
+            return True
+
+        monkeypatch.setattr(pipeline, "joern_mcp_tools", empty_mcp)
+        monkeypatch.setattr(pipeline, "_try_index", fake_index)
+        monkeypatch.setattr(pipeline, "_sinks_worth_probing", sinks_present)
+
+        blueprint = make_blueprint(sinks=["yaml.full_load"])
+        with pytest.raises(JoernUnavailable, match="mcp-joern"):
+            await pipeline.gather(
+                blueprint=blueprint,
+                plan=plan(blueprint),
+                codebase_path=sample_codebase,
+                model=ProbeScriptedChatModel(payloads=ALL_PAYLOADS),
+            )
+
+    async def test_configuration_plan_can_run_without_joern(self, no_joern, sample_codebase):
+        """Config-only evidence does not require a CPG."""
+        blueprint = make_blueprint(conditions=[ConditionType.CONFIGURATION_REQUIREMENT])
+        evidence = await pipeline.gather(
+            blueprint=blueprint,
+            plan=plan(blueprint),
+            codebase_path=sample_codebase,
+            model=ProbeScriptedChatModel(payloads=ALL_PAYLOADS),
+        )
+        assert ProbeId.MISCONFIG in evidence.ran
+        assert evidence.gaps == []
+
+    async def test_inclusion_records_joern_presence_when_cpg_is_ready(
+        self, monkeypatch, sample_codebase
+    ):
+        from langchain_core.tools import tool
+
+        @tool
+        def joern_stub() -> str:
+            """Offline stand-in for an mcp-joern CPG tool."""
+            return "offline stub"
+
+        @asynccontextmanager
+        async def fake_cpg_tools():
+            yield [joern_stub]
+
+        async def fake_index(_path):
+            return {"indexed": True, "path": "/tmp/sample", "file_count": 1, "method_count": 1, "call_count": 1, "sample_files": ["app.py"]}
+
+        async def fake_presence(purl, name=None):
+            return PresenceEvidence(
+                imported=True, tokens=["thing"], hit_count=1, notes="matched"
+            )
+
+        monkeypatch.setattr(pipeline, "joern_mcp_tools", fake_cpg_tools)
+        monkeypatch.setattr(pipeline, "_try_index", fake_index)
+        monkeypatch.setattr(pipeline.joern, "component_presence", fake_presence)
+
+        blueprint = make_blueprint(cwe_ids=["CWE-506"])
+        evidence = await pipeline.gather(
+            blueprint=blueprint,
+            plan=plan(blueprint),
+            codebase_path=sample_codebase,
+            model=ProbeScriptedChatModel(payloads=ALL_PAYLOADS),
+        )
+        assert evidence.presence is not None
+        assert evidence.presence.imported is True
+        assert evidence.ran == []  # inclusion has no S1–S4 probes by default
+
 
 class TestAssess:
     def _sbom(self, purl: str = "pkg:pypi/pyyaml@5.3.1") -> CycloneDXSBOM:
@@ -220,6 +352,40 @@ class TestAssess:
         assert report.severity is Severity.CRITICAL
         assert report.environmental_vector.startswith(report.original_base_vector)
         assert report.score_delta == 0.0
+
+    async def test_unknown_basis_is_flagged_not_rescored(self, offline, sample_codebase, monkeypatch):
+        """Draft report: keep base CVSS, skip environmental rescoring."""
+        from core.models import Blueprint, BlueprintCVSS
+
+        incomplete = Blueprint(
+            cve_id="CVE-2020-14343",
+            cvss=BlueprintCVSS(
+                score=9.8,
+                vector="CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            ),
+            affected_components=[{"name": "pyyaml", "purl": "pkg:pypi/pyyaml@5.3.1"}],
+            conditions=[{"type": ConditionType.DEPENDENCY_REACHABILITY, "value": "claimed"}],
+            upstream_artifacts={"functions": []},
+        )
+
+        class FakeStore:
+            def get(self, *_args, **_kwargs):
+                return incomplete
+
+        monkeypatch.setattr(pipeline, "BlueprintStore", lambda *_a, **_k: FakeStore())
+
+        report = await pipeline.assess(
+            sbom=self._sbom(),
+            cve_id="CVE-2020-14343",
+            codebase_path=sample_codebase,
+            model=ProbeScriptedChatModel(payloads=ALL_PAYLOADS),
+        )
+        assert report.skipped is True
+        assert report.rescored is False
+        assert report.verdict.activation_state is ActivationState.SKIPPED
+        assert report.score == 9.8
+        assert report.environmental_vector == report.original_base_vector
+        assert "analyst" in report.reason.lower() or "incomplete" in report.skip_reason.lower()
 
     async def test_a_mitigated_finding_scores_zero(self, offline, sample_codebase):
         mitigated = json.dumps(

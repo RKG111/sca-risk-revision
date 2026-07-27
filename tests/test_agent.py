@@ -15,7 +15,7 @@ import pytest
 from core.agent import run_agent
 from core.errors import EvidenceUnavailable
 from core.models import ExploitPathEvidence, MisconfigEvidence
-from core.tools import file_tools
+from core.tools import _relative_glob, file_tools
 from tests.fake_llm import ScriptedChatModel
 
 VALID_S1 = json.dumps(
@@ -121,6 +121,33 @@ class TestRunAgent:
         evidence = await _run(script[:1])
         assert evidence.notes == "first attempt"
 
+    async def test_tool_shaped_json_is_not_accepted_as_empty_evidence(self):
+        """Models sometimes write {"name":"check_connection"} as content instead of tool_calls."""
+        fake = json.dumps({"name": "check_connection", "arguments": {}})
+        with pytest.raises(EvidenceUnavailable, match="no valid ExploitPathEvidence"):
+            await _run([{"content": f"```json\n{fake}\n```"}])
+
+    async def test_refuses_identical_tool_thrashing(self, sample_codebase):
+        """Same tool+args more than twice gets a refusal; agent can still finish."""
+        tools = file_tools(sample_codebase)
+        same = {"tool_calls": [{"name": "search_text", "args": {"substring": "full_load"}}]}
+        script = [same, same, same, {"content": f"```json\n{VALID_S1}\n```"}]
+        evidence = await _run(script, tools=tools, max_iterations=8)
+        assert len(evidence.exploit_paths) == 1
+
+
+class TestRelativeGlob:
+    def test_strips_absolute_unix_prefix(self):
+        assert _relative_glob("/tmp/only/**/*.py") == "tmp/only/**/*.py"
+
+    def test_strips_codebase_root(self, sample_codebase):
+        abs_pat = str(sample_codebase / "**" / "*.py")
+        assert _relative_glob(abs_pat, root=sample_codebase) == "**/*.py"
+
+    def test_empty_falls_back(self):
+        assert _relative_glob("") == "**/*"
+        assert _relative_glob("   ") == "**/*"
+
 
 class TestFileTools:
     def test_tools_are_scoped_to_their_codebase(self, sample_codebase, repo_root):
@@ -154,3 +181,20 @@ class TestFileTools:
     def test_product_docs_are_optional(self, sample_codebase):
         tools = {t.name: t for t in file_tools(sample_codebase)}
         assert "No product docs" in tools["read_product_docs"].invoke({})
+
+    def test_absolute_glob_does_not_raise(self, sample_codebase):
+        tools = {t.name: t for t in file_tools(sample_codebase)}
+        # Model often pastes absolute codebase paths into find_files / search_text.
+        abs_pattern = str(sample_codebase / "**" / "*.py")
+        result = tools["find_files"].invoke({"pattern": abs_pattern})
+        assert "Non-relative" not in result
+        assert "app.py" in result
+
+    def test_search_text_accepts_absolute_file_glob(self, sample_codebase):
+        tools = {t.name: t for t in file_tools(sample_codebase)}
+        abs_glob = str(sample_codebase / "**" / "*")
+        result = tools["search_text"].invoke(
+            {"substring": "full_load", "file_glob": abs_glob}
+        )
+        assert "Non-relative" not in result
+        assert "app.py:" in result

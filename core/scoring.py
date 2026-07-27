@@ -34,6 +34,7 @@ from core.models import (
     Severity,
 )
 from core.policy import clamps
+from core.telemetry import ScanSession
 
 logger = logging.getLogger(__name__)
 
@@ -234,6 +235,8 @@ def llm_adjudicator(
     verdict: RiskVerdict,
     evidence: EvidenceSet,
     unresolved: list[str],
+    *,
+    session: Optional[ScanSession] = None,
 ) -> MetricJudgements:
     """Ask the model to set the modified metrics from the gathered evidence."""
     questions = "\n".join(f"- {m}: {QUESTIONS[m]} (allowed: {', '.join(VOCABULARY[m])})" for m in unresolved)
@@ -258,10 +261,28 @@ Keep the base value unless the evidence positively justifies changing it.
             MetricJudgements,
             system="You adjudicate CVSS environmental metrics from code evidence. Be conservative.",
             user=prompt,
+            session=session,
+            skill="MDE",
         )
     except LLMUnavailable as exc:
         logger.warning("Metric adjudication unavailable (%s); keeping base metrics", exc)
         return MetricJudgements()
+
+
+def make_llm_adjudicator(*, session: Optional[ScanSession] = None) -> Adjudicator:
+    """Bind a scan session into the default LLM adjudicator."""
+
+    def _adjudicate(
+        blueprint: Blueprint,
+        verdict: RiskVerdict,
+        evidence: EvidenceSet,
+        unresolved: list[str],
+    ) -> MetricJudgements:
+        return llm_adjudicator(
+            blueprint, verdict, evidence, unresolved, session=session
+        )
+
+    return _adjudicate
 
 
 # ─────────────────────────────────────────────────────────────────────────────
