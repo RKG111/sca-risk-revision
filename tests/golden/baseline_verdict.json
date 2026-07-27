@@ -1,0 +1,59 @@
+{
+  "cve_id": "CVE-2020-14343",
+  "component_purl": "pkg:pypi/pyyaml@5.3.1",
+  "original_base_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "environmental_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/CR:H/IR:H/AR:H/MAV:N/MAC:L/MPR:N/MUI:N/MS:U/MC:H/MI:H/MA:H",
+  "score": 9.8,
+  "severity": "CRITICAL",
+  "rescored": true,
+  "skipped": false,
+  "exploitable": true,
+  "activation_basis": "hybrid",
+  "activation_state": "activated",
+  "metric_answers": [
+    {
+      "metric": "AR",
+      "answer": "H"
+    },
+    {
+      "metric": "CR",
+      "answer": "H"
+    },
+    {
+      "metric": "IR",
+      "answer": "H"
+    },
+    {
+      "metric": "MA",
+      "answer": "H"
+    },
+    {
+      "metric": "MAC",
+      "answer": "L"
+    },
+    {
+      "metric": "MAV",
+      "answer": "N"
+    },
+    {
+      "metric": "MC",
+      "answer": "H"
+    },
+    {
+      "metric": "MI",
+      "answer": "H"
+    },
+    {
+      "metric": "MPR",
+      "answer": "N"
+    },
+    {
+      "metric": "MS",
+      "answer": "U"
+    },
+    {
+      "metric": "MUI",
+      "answer": "N"
+    }
+  ]
+}

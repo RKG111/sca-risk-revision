@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.env
+.chromadb/
+
+# mcp-joern local
+third_party/mcp-joern/.venv/
+third_party/mcp-joern/.env
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+.run/
+
+tests/results/

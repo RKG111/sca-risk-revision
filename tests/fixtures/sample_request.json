@@ -1,0 +1,52 @@
+{
+  "cve_id": "CVE-2020-14343",
+  "codebase_path": "tests/fixtures/sample_project",
+  "sbom": {
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.5",
+    "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+    "version": 1,
+    "metadata": {
+      "component": {
+        "type": "application",
+        "name": "acme-payment-gateway",
+        "version": "1.0.0"
+      }
+    },
+    "components": [
+      {
+        "type": "library",
+        "bom-ref": "pkg:pypi/pyyaml@5.3.1",
+        "name": "pyyaml",
+        "version": "5.3.1",
+        "purl": "pkg:pypi/pyyaml@5.3.1"
+      }
+    ],
+    "vulnerabilities": [
+      {
+        "bom-ref": "vuln-CVE-2020-14343",
+        "id": "CVE-2020-14343",
+        "source": {
+          "name": "NVD",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-14343"
+        },
+        "ratings": [
+          {
+            "source": {
+              "name": "NVD"
+            },
+            "score": 9.8,
+            "severity": "critical",
+            "method": "CVSSv31",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          }
+        ],
+        "affects": [
+          {
+            "ref": "pkg:pypi/pyyaml@5.3.1"
+          }
+        ]
+      }
+    ]
+  }
+}

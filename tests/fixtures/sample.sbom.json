@@ -23,24 +23,24 @@
   "components": [
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/pyyaml@5.4.1",
+      "bom-ref": "pkg:pypi/pyyaml@5.3.1",
       "publisher": "PyYAML",
       "name": "pyyaml",
-      "version": "5.4.1",
-      "purl": "pkg:pypi/pyyaml@5.4.1"
+      "version": "5.3.1",
+      "purl": "pkg:pypi/pyyaml@5.3.1"
     }
   ],
   "vulnerabilities": [
     {
-      "bom-ref": "vuln-CVE-2022-1471",
-      "id": "CVE-2022-1471",
+      "bom-ref": "vuln-CVE-2020-14343",
+      "id": "CVE-2020-14343",
       "source": {
         "name": "NVD",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-1471"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-14343"
       },
       "ratings": [
         {
-          "source_name": "NVD",
+          "source": { "name": "NVD" },
           "score": 9.8,
           "severity": "critical",
           "method": "CVSSv31",
@@ -49,7 +49,7 @@
       ],
       "affects": [
         {
-          "ref": "pkg:pypi/pyyaml@5.4.1"
+          "ref": "pkg:pypi/pyyaml@5.3.1"
         }
       ]
     }

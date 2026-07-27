@@ -1,170 +1,162 @@
 # SCA Risk Rescoring Platform — POC
 
-Context-aware vulnerability rescoring that replaces generic NVD CVSS scores with
-evidence-backed assessments derived from your actual codebase and deployment context.
+Most CVEs reported against a codebase do not matter to it. This service works out
+which ones do, and rescores them for *your* product rather than for the world.
 
-## The Problem
+It takes a CycloneDX SBOM, a CVE id and a codebase; it returns an environmental
+CVSS score plus the evidence behind it.
 
-Standard SCA tools flag vulnerabilities based purely on version strings matched against NVD.
-A CRITICAL 9.8 CVE in a library you import but **never call the vulnerable function** is treated
-identically to one you call with raw user input. This is alert fatigue.
+## How it works
 
-## The Solution
-
-This platform evaluates **how your code actually uses** a vulnerable package, then reconstructs
-the CVSS Base Score from code-proven facts rather than abstract assumptions.
-
----
-
-## Architecture
+Four LLM agents ("probes") gather evidence from the code. One policy module turns
+that evidence into a single verdict. One scoring module turns the verdict into a
+CVSS score.
 
 ```
-SBOM + Codebase + Deployment Docs
+CycloneDX SBOM + CVE id + codebase
           │
           ▼
-┌─────────────────────┐
-│  Module 1: Indexer  │  Tree-sitter AST + Joern CPG + ChromaDB
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│  Module 2: Blueprint│  NVD API → Claude Sonnet (LLMaS) → AttackBlueprint JSON
-└──────────┬──────────┘
-           │
-      ┌────┴────┐
-      │         │
-      ▼         ▼
-┌──────────┐ ┌──────────┐
-│Module 3  │ │Module 4  │
-│Determin. │ │AI Agent  │  (routed by blueprint.assessment_strategy)
-│Joern+    │ │LangGraph │
-│Semgrep   │ │+ Claude  │
-└────┬─────┘ └────┬─────┘
-     └─────┬──────┘
-           │
-           ▼
-┌─────────────────────┐
-│  Module 5: Rescore  │  Evidence → CVSS Engine → Signed Report
-└─────────────────────┘
+  1. resolve   which component the CVE affects
+  2. lookup    the trusted blueprint for that (CVE, versioned PURL)
+  3. plan      how activation will be judged, and which probes can show it
+          │
+          ▼
+  4. gather    S1 exploit paths    ┐
+               S2 misconfiguration ├─ agents, with Joern CPG + file tools
+               S3 deployment       │
+               S4 mitigations      ┘  (S4 waits for S1)
+          │
+          ▼
+  5. decide    one RiskVerdict: activated? exploitable?
+  6. score     environmental CVSS, with policy clamps applied last
 ```
 
----
+Two properties are worth knowing up front, because they shape everything else:
 
-## Quick Start
+**Evidence comes only from agents.** There is no parallel deterministic
+implementation to fall back on. When a probe cannot run, that is recorded as an
+evidence gap and the verdict becomes *inconclusive* — never "safe". A silent
+fallback would make "we checked and found nothing" indistinguishable from
+"we could not check", which is the difference between a real result and a guess.
 
-### Prerequisites
-- Python 3.11+
-- Docker + Docker Compose
-- Access to LLMaS endpoint (Claude Sonnet)
-- Ollama running on GPU VM (optional, for embeddings)
+**Only `core/policy.py` decides anything.** Scoring consumes the verdict; it
+never re-derives exploitability. Agents report findings; they never conclude.
 
-### Setup
+## Layout
+
+One flat package, one concept per file. Read it in this order:
+
+```
+core/models.py     every data shape: blueprint, SBOM, evidence, verdict, report
+core/config.py     the single settings source, and the generator for derived files
+core/errors.py     typed failures
+core/store.py      blueprint lookup
+core/joern.py      the only code that talks to Joern
+core/llm.py        the only code that talks to the model
+core/tools.py      the toolbelt handed to agents
+core/agent.py      the one agent loop
+core/probes.py     the four evidence questions, side by side
+core/policy.py     the only code that decides activation and exploitability
+core/scoring.py    CVSS vector, metric adjudication, arithmetic
+core/pipeline.py   wiring — the only entry point you need
+core/prompts/      S1–S4 agent instructions
+
+api/main.py        HTTP transport, nothing else
+blueprints/        trusted component–CVE research
+third_party/       vendored Joern MCP server
+```
+
+## Quick start
 
 ```bash
-# 1. Clone and configure
 cp .env.example .env
-# Edit .env with your LLMaS URL, API key, and Ollama VM IP
-
-# 2. Install Python dependencies
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# 3. Start Joern (required for CPG analysis)
-cd docker && docker compose up joern -d
+# One-time, so Joern's container is reachable:
+#   sudo usermod -aG docker "$USER" && newgrp docker
 
-# 4. Start the API
-uvicorn api.main:app --reload
+./scripts/stack.sh start     # Ollama + Joern + mcp-joern + API
+./scripts/stack.sh status
 ```
 
-### Submit a Rescoring Job
+```python
+from core.models import CycloneDXSBOM
+from core.pipeline import assess
+
+report = await assess(sbom=sbom, cve_id="CVE-2020-14343", codebase_path=Path("./target"))
+print(report.score, report.exploitable, report.verdict.rationale)
+```
+
+### API
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/analyze \
   -H "Content-Type: application/json" \
   -d @tests/fixtures/sample_request.json
-```
+# → {"job_id": "...", "status": "queued"}
 
-### Check the Result
-
-```bash
 curl http://localhost:8000/api/v1/reports/{job_id}
 ```
 
----
+## Services
 
-## Project Structure
+| Service | Role |
+|---|---|
+| Ollama | The model behind the probes and CVSS adjudication |
+| Joern | CPG server on `:16162`, started by `joern-run.sh` |
+| mcp-joern | FastMCP SSE on `:8001/sse`, exposing CPG tools to agents |
+| FastAPI | `/api/v1/analyze`, `/api/v1/reports/{id}` |
 
-```
-sca-risk-revision/
-├── api/                        # FastAPI application
-│   ├── main.py                 # App entrypoint
-│   ├── config.py               # Settings (pydantic-settings)
-│   └── routers/
-│       ├── analysis.py         # POST /api/v1/analyze
-│       └── reports.py          # GET /api/v1/reports/{id}
-│
-├── schemas/                    # Shared Pydantic models
-│   ├── sbom.py                 # CycloneDX SBOM input
-│   ├── blueprint.py            # Attack Blueprint (Module 2 output)
-│   └── report.py               # Rescored Report (final output)
-│
-├── modules/
-│   ├── ingestion/              # Module 1: Code Indexer
-│   │   ├── tree_sitter_parser.py
-│   │   ├── joern_client.py
-│   │   └── indexer.py
-│   ├── blueprint/              # Module 2: Blueprint Generator
-│   │   ├── nvd_client.py
-│   │   └── generator.py
-│   ├── deterministic/          # Module 3: Static Analysis
-│   │   ├── semgrep_runner.py
-│   │   ├── joern_queries.py
-│   │   └── resolver.py
-│   ├── agent/                  # Module 4: LangGraph Agent
-│   │   ├── graph.py
-│   │   └── tools/
-│   │       ├── file_search.py
-│   │       ├── ast_slicer.py
-│   │       └── cross_ref.py
-│   └── rescoring/              # Module 5: CVSS Engine
-│       ├── cvss_engine.py
-│       └── report_builder.py
-│
-├── tests/
-│   └── fixtures/
-│       ├── sample.sbom.json    # Sample CycloneDX SBOM (PyYAML CVE)
-│       └── sample_project/     # Placeholder for test codebase
-│
-├── docker/
-│   ├── docker-compose.yml      # Joern + API
-│   └── Dockerfile
-│
-├── requirements.txt
-├── .env.example
-└── plan.md                     # Original architecture document
+`core/joern.py` and mcp-joern are two transports to the same Joern server: the
+service uses HTTP for its own lookups, agents use MCP tools. Neither is a
+fallback for the other.
+
+## Tests
+
+The suite is offline and deterministic. Agent replies are scripted (see
+`tests/fake_llm.py`), so policy and scoring — which *are* deterministic given
+fixed evidence — can be asserted exactly.
+
+```bash
+PYTHONPATH=. pytest              # everything, offline
+PYTHONPATH=. pytest -m live      # the subset needing a running stack
 ```
 
----
+`tests/golden/baseline_verdict.json` pins the decision for the sample fixture,
+and is what proves the rebuild preserved behaviour. Change it deliberately:
 
-## LLM Configuration
+```bash
+REWRITE_GOLDEN=1 PYTHONPATH=. pytest tests/test_baseline.py
+```
 
-The platform uses two LLM surfaces:
+## Configuration
 
-| Role | Model | Config Key |
-|---|---|---|
-| Blueprint generation | Claude Sonnet (LLMaS) | `LLMAS_*` |
-| Agent reasoning loop | Claude Sonnet (LLMaS) | `LLMAS_*` |
-| Embeddings (optional) | Qwen2.5-Coder 32B (Ollama) | `OLLAMA_*` |
+`core/config.py` is the only source of configuration. Every value comes from
+`.env` (see `.env.example`), and files that would otherwise duplicate those
+values are generated:
 
-Both use the OpenAI-compatible API format. Point `LLMAS_BASE_URL` at your LLMaS endpoint.
+```bash
+python -m core.config    # writes mcp_servers.json + third_party/.../mcp_settings.json
+```
 
----
+Do not hand-edit those two files; they carry a `_generated_by` marker.
 
-## POC Phasing
+## Extending
+
+**Add a probe.** Write `core/prompts/S5.md`, add its output contract to
+`core/models.py`, add a context builder plus one `PROBES` entry in
+`core/probes.py`, and handle it in `absorb`. No runner or registry to touch.
+
+**Add a risk rule.** It goes in `core/policy.py`. If you are tempted to put a
+rule anywhere else, that is the bug.
+
+**Add an MCP server.** Add a connection in `_mcp_connections` in `core/tools.py`.
+
+## Phasing
 
 | Phase | Scope | Status |
 |---|---|---|
-| 1 | Schemas + NVD client + Blueprint generator | Scaffolded |
-| 2 | Tree-sitter indexer + Semgrep deterministic checks | Scaffolded |
-| 3 | CVSS rescoring + FastAPI end-to-end | Scaffolded |
-| 4 | LangGraph agentic loop | Scaffolded |
-| 5 | Joern CPG integration | Scaffolded |
+| 1 | Agentic core, policy, environmental CVSS | Current |
+| 2 | Blueprint generation from advisories | Planned |
+| 2 | Product criticality driving CR/IR/AR (currently defaulted to High) | Planned |

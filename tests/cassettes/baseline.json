@@ -1,0 +1,156 @@
+{
+  "s1": {
+    "skill": "S1",
+    "exploit_paths": [
+      {
+        "path_id": "path-1",
+        "sink": "yaml.full_load",
+        "summary": "Call site of yaml.full_load at app.py:13",
+        "steps": [
+          {
+            "file": "app.py",
+            "line": 13,
+            "symbol": "yaml.full_load",
+            "detail": "data = yaml.full_load(raw)"
+          }
+        ],
+        "confidence": 0.7,
+        "reachable": true
+      },
+      {
+        "path_id": "path-2",
+        "sink": "yaml.load",
+        "summary": "Call site of yaml.load at app.py:18",
+        "steps": [
+          {
+            "file": "app.py",
+            "line": 18,
+            "symbol": "yaml.load",
+            "detail": "return yaml.load(payload, Loader=yaml.FullLoader)"
+          }
+        ],
+        "confidence": 0.7,
+        "reachable": true
+      },
+      {
+        "path_id": "path-3",
+        "sink": "FullLoader",
+        "summary": "Call site of FullLoader at app.py:18",
+        "steps": [
+          {
+            "file": "app.py",
+            "line": 18,
+            "symbol": "FullLoader",
+            "detail": "return yaml.load(payload, Loader=yaml.FullLoader)"
+          }
+        ],
+        "confidence": 0.7,
+        "reachable": true
+      }
+    ],
+    "notes": "Filesystem fallback: 3 path(s)"
+  },
+  "s2": {
+    "skill": "S2",
+    "misconfigurations": [
+      {
+        "finding_id": "miscfg-1",
+        "description": "use of vulnerable PyYAML FullLoader / full_load without SafeLoader",
+        "evidence": "app.py:1: \"\"\"Sample vulnerable usage of PyYAML FullLoader for end-to-end fixtures.\"\"\"",
+        "relevant_to_cve": true,
+        "location": "app.py:1",
+        "confidence": 0.75
+      },
+      {
+        "finding_id": "miscfg-2",
+        "description": "use of vulnerable PyYAML FullLoader / full_load without SafeLoader",
+        "evidence": "app.py:12: # Vulnerable: untrusted YAML via full_load",
+        "relevant_to_cve": true,
+        "location": "app.py:12",
+        "confidence": 0.75
+      }
+    ],
+    "notes": "Evaluated 1 condition(s)"
+  },
+  "s3": {
+    "skill": "S3",
+    "deployment_findings": [
+      {
+        "finding_id": "deploy-1",
+        "condition_type": "network_access",
+        "description": "attacker can supply YAML input remotely or via external interface",
+        "product_value": "application_http_interface",
+        "applies": true,
+        "evidence": "HTTP indicators: app.py",
+        "confidence": 0.6
+      },
+      {
+        "finding_id": "deploy-2",
+        "condition_type": "privilege_required",
+        "description": "none",
+        "product_value": "none",
+        "applies": true,
+        "evidence": "Blueprint privilege: none",
+        "confidence": 0.6
+      },
+      {
+        "finding_id": "deploy-3",
+        "condition_type": "user_interaction",
+        "description": "none",
+        "product_value": "none",
+        "applies": true,
+        "evidence": "Blueprint UI: none",
+        "confidence": 0.6
+      }
+    ],
+    "applicability_falsified": false,
+    "notes": "Evaluated 3 deployment condition(s)"
+  },
+  "s4": {
+    "skill": "S4",
+    "mitigations_by_path": [
+      {
+        "path_id": "path-1",
+        "mitigation_description": "upgrade dependency to PyYAML version 5.4 or later",
+        "present": false,
+        "strength": "none",
+        "evidence": "Not found",
+        "confidence": 0.55
+      },
+      {
+        "path_id": "path-2",
+        "mitigation_description": "upgrade dependency to PyYAML version 5.4 or later",
+        "present": false,
+        "strength": "none",
+        "evidence": "Not found",
+        "confidence": 0.55
+      },
+      {
+        "path_id": "path-3",
+        "mitigation_description": "upgrade dependency to PyYAML version 5.4 or later",
+        "present": false,
+        "strength": "none",
+        "evidence": "Not found",
+        "confidence": 0.55
+      }
+    ],
+    "notes": "Checked 2 mitigation(s) across 3 path(s)"
+  },
+  "plan": {
+    "activation_basis": "hybrid",
+    "sink_gate": true,
+    "require_s1_paths_for_activation": true,
+    "require_s2_unsafe_for_activation": true,
+    "presence_check": false,
+    "skill_ids": [
+      "S1",
+      "S2",
+      "S4",
+      "S3"
+    ],
+    "chooser_notes": "sinks + configuration_requirement \u2192 hybrid",
+    "chooser_source": "rule",
+    "skip_rescoring": false
+  },
+  "presence": null
+}

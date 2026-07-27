@@ -1,0 +1,25 @@
+{
+  "_generated_by": "python -m core.config",
+  "servers": {
+    "joern": {
+      "enabled": true,
+      "url": "http://127.0.0.1:8001/sse",
+      "stdio": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/home/dagger/PROJECTS/sca-risk-revision/third_party/mcp-joern",
+          "run",
+          "server.py"
+        ],
+        "cwd": "/home/dagger/PROJECTS/sca-risk-revision/third_party/mcp-joern",
+        "env": {
+          "HOST": "127.0.0.1",
+          "PORT": "16162",
+          "USER_NAME": "user",
+          "PASSWORD": "password"
+        }
+      }
+    }
+  }
+}
