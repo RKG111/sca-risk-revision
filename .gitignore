@@ -5,6 +5,9 @@ __pycache__/
 .env
 .chromadb/
 
+# Scan workspaces (keep directory, ignore contents)
+workspace/*/
+
 # mcp-joern local
 third_party/mcp-joern/.venv/
 third_party/mcp-joern/.env

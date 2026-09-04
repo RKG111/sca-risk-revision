@@ -7,15 +7,8 @@ httpx>=0.27.0
 pydantic>=2.7.0
 pydantic-settings>=2.3.0
 
-# ── Agents (OpenAI-compatible API, so Ollama or a hosted provider) ────────────
-langchain-openai>=0.1.8
-langchain-core>=0.2.10
-langgraph>=0.2.0
-langchain-mcp-adapters>=0.1.0
-mcp>=1.0.0
+# ── LLM (OpenAI SDK → Ollama OpenAI-compatible endpoint) ──────────────────────
 openai>=1.35.0
-# Schema-constrained metric adjudication.
-instructor>=1.3.0
 
 # ── CVSS environmental scoring ────────────────────────────────────────────────
 cvss>=2.6.0
