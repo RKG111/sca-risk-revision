@@ -1,16 +1,16 @@
-# Graph Report - sca-risk-revision  (2026-09-04)
+# Graph Report - sca-risk-revision  (2026-07-30)
 
 ## Corpus Check
-- 150 files · ~42,174 words
+- 140 files · ~38,272 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1215 nodes · 2472 edges · 97 communities (66 shown, 31 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 110 edges (avg confidence: 0.63)
+- 1099 nodes · 2233 edges · 101 communities (69 shown, 32 thin omitted)
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 103 edges (avg confidence: 0.63)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f48b3a94`
+- Built from commit: `8ee23219`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -59,6 +59,8 @@
 - workspace.py
 - test_baseline.py
 - test_agent.py
+- file_tools
+- assess
 - CVE-2021-23337-lodash/app/package.json
 - CVE-2021-23358-underscore/app/package.json
 - S1 — Exploit Path Verification
@@ -71,9 +73,11 @@
 - Plan — SCA Risk Revision
 - CVE-2022-23812-node-ipc/app/package.json
 - Sample CVE assessment dataset
+- aggregate_evidence
 - write_generated_config
 - sample_project/app.py
 - no_joern
+- TestWaves
 - App
 - JsonApi
 - handler
@@ -114,62 +118,62 @@
 1. `EvidenceSet` - 71 edges
 2. `plan()` - 48 edges
 3. `blueprint()` - 37 edges
-4. `GortexClient` - 33 edges
-5. `ScanSession` - 30 edges
-6. `Blueprint` - 29 edges
-7. `decide()` - 29 edges
-8. `assess()` - 26 edges
-9. `joern_remote()` - 24 edges
-10. `ProbeScriptedChatModel` - 23 edges
+4. `ScanSession` - 30 edges
+5. `Blueprint` - 29 edges
+6. `decide()` - 29 edges
+7. `assess()` - 26 edges
+8. `joern_remote()` - 24 edges
+9. `ProbeScriptedChatModel` - 23 edges
+10. `CoreError` - 21 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `main()` --indirect_call--> `client()`  [INFERRED]
-  scripts/gortex_taint_experiment.py → deprecated/tests/test_api.py
-- `main()` --calls--> `GortexClient`  [EXTRACTED]
-  scripts/gortex_taint_experiment.py → agent/gortex/client.py
-- `route_entry_points()` --references--> `GortexClient`  [EXTRACTED]
-  scripts/gortex_taint_experiment.py → agent/gortex/client.py
-- `run()` --references--> `GortexClient`  [EXTRACTED]
-  scripts/gortex_taint_experiment.py → agent/gortex/client.py
-- `run()` --calls--> `find_taint_paths()`  [EXTRACTED]
-  scripts/gortex_taint_experiment.py → agent/gortex/taint.py
+- `chat_json()` --calls--> `write_conversation()`  [EXTRACTED]
+  agent/llm.py → app/workspace.py
+- `run_pipeline()` --calls--> `read_json()`  [EXTRACTED]
+  agent/pipeline.py → app/workspace.py
+- `create_scan()` --indirect_call--> `run_pipeline()`  [INFERRED]
+  app/api/scans.py → agent/pipeline.py
+- `prepare_tool_bundle()` --calls--> `write_json()`  [EXTRACTED]
+  agent/pipeline.py → app/workspace.py
+- `run_skills()` --calls--> `update_status()`  [EXTRACTED]
+  agent/pipeline.py → app/workspace.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (97 total, 31 thin omitted)
+## Communities (101 total, 32 thin omitted)
 
 ### Community 0 - "EvidenceSet"
-Cohesion: 0.29
-Nodes (4): Blueprint, ConditionType, Component-specific CVE research. Never mentions probes or CVSS policy., Kinds of precondition a CVE can carry.
+Cohesion: 0.12
+Nodes (16): ActivationBasis, AnswerSource, Blueprint, ConditionType, Confidence, CVSS 3.1 severity bands — the only place this mapping exists., Component-specific CVE research. Never mentions probes or CVSS policy., Kinds of precondition a CVE can carry. (+8 more)
 
 ### Community 1 - "joern_remote"
 Cohesion: 0.05
 Nodes (70): extract_code_between_triple_quotes(), extract_list(), extract_long_value(), extract_quoted_string(), extract_value(), Extract value from a string based on its pattern.          This function automat, Extract content between triple quotes from a string.          Args:         inpu, Extract a list of elements from a string representation of a Scala List. (+62 more)
 
 ### Community 2 - "BlueprintStore"
-Cohesion: 0.06
-Nodes (47): ActivationBasis, ActivationState, AssessmentPlan, DeploymentFinding, EvidenceSet, PathMitigationResult, Everything the probes established, flattened into one place.      `ran` and `gap, Paths with no high-strength mitigation covering them. (+39 more)
+Cohesion: 0.07
+Nodes (35): DeploymentFinding, EvidenceSet, ExploitPath, MisconfigurationFinding, PathMitigationResult, Everything the probes established, flattened into one place.      `ran` and `gap, Paths with no high-strength mitigation covering them., Tri-state network exposure from deployment findings.          False wins over Tr (+27 more)
 
 ### Community 3 - "test_agent.py"
-Cohesion: 0.10
-Nodes (26): Gortex-backed code intelligence: HTTP client and interprocedural taint., _dedupe(), _flatten_cfg(), _leaf(), _matches_sink(), _matches_source(), _param_name(), Any (+18 more)
+Cohesion: 0.29
+Nodes (4): BaseChatModel, Replays a fixed list of turns, one per invocation.      A turn is `{"content": ", ScriptedChatModel, TestAgentConversationLog
 
 ### Community 4 - "BaseModel"
 Cohesion: 0.08
-Nodes (14): BlueprintStore, normalise_purl(), package_tokens(), Path, Lowercase the type and name, keep the version, drop qualifiers., Import-name candidates for a package, for presence checks.      pkg:pypi/pyyaml@, Directory of blueprint JSON files, indexed on first use., Index every *.json under the store path. Returns the file count. (+6 more)
+Nodes (15): BlueprintStore, normalise_purl(), package_tokens(), Path, Lowercase the type and name, keep the version, drop qualifiers., Import-name candidates for a package, for presence checks.      pkg:pypi/pyyaml@, Directory of blueprint JSON files, indexed on first use., Index every *.json under the store path. Returns the file count. (+7 more)
 
 ### Community 5 - "joern.py"
 Cohesion: 0.09
-Nodes (33): JoernUnavailable, Joern is not reachable, or a CPG query failed., SCA risk assessment core.  One flat package, one concept per module:      config, component_presence(), The only code in the system that talks to Joern.  Joern is reached over its `/qu, Whether the vulnerable component is imported anywhere in the CPG.      Import-gr, ProbeId, The four evidence questions we can ask about a codebase. (+25 more)
+Nodes (32): The single source of configuration truth.  Everything that used to be duplicated, JoernUnavailable, Joern is not reachable, or a CPG query failed., SCA risk assessment core.  One flat package, one concept per module:      config, component_presence(), The only code in the system that talks to Joern.  Joern is reached over its `/qu, Whether the vulnerable component is imported anywhere in the CPG.      Import-gr, EvidenceGap (+24 more)
 
 ### Community 6 - "plan"
-Cohesion: 0.08
-Nodes (35): AffectedComponent, BlueprintCondition, BlueprintMitigation, BlueprintReferences, CycloneDXSBOM, DeploymentEvidence, EvidenceGap, ExploitPath (+27 more)
+Cohesion: 0.11
+Nodes (26): AffectedComponent, BlueprintCondition, BlueprintCVSS, BlueprintMitigation, BlueprintReferences, CycloneDXSBOM, DeploymentEvidence, ExploitPathEvidence (+18 more)
 
 ### Community 7 - "ProbeScriptedChatModel"
 Cohesion: 0.08
-Nodes (17): CallbackManagerForLLMRun, ChatResult, _default_tool_args(), final_answer(), ProbeScriptedChatModel, Any, BaseMessage, Script that answers immediately with a JSON payload. (+9 more)
+Nodes (18): CallbackManagerForLLMRun, ChatResult, _default_tool_args(), final_answer(), ProbeScriptedChatModel, Any, BaseMessage, Scripted chat model for offline agent tests.  An agent-only architecture has no (+10 more)
 
 ### Community 8 - "pipeline.py"
 Cohesion: 0.12
@@ -180,8 +184,8 @@ Cohesion: 0.26
 Nodes (21): api_running(), bad(), cmd_logs(), cmd_start(), cmd_status(), cmd_stop(), ensure_api(), ensure_joern() (+13 more)
 
 ### Community 11 - "EvidenceUnavailable"
-Cohesion: 0.10
-Nodes (22): _parse_evidence(), AIMessage, Any, T, The one agent loop.  Every probe runs through `run_agent`. A probe supplies inst, Pull the last valid instance of the output contract out of the transcript., Synthetic tool results that tell the model to change strategy., Run one probe to completion and return its typed evidence.      Raises EvidenceU (+14 more)
+Cohesion: 0.13
+Nodes (20): _parse_evidence(), AIMessage, Any, T, The one agent loop.  Every probe runs through `run_agent`. A probe supplies inst, Pull the last valid instance of the output contract out of the transcript., Synthetic tool results that tell the model to change strategy., Run one probe to completion and return its typed evidence.      Raises EvidenceU (+12 more)
 
 ### Community 12 - "test_api.py"
 Cohesion: 0.10
@@ -192,24 +196,24 @@ Cohesion: 0.18
 Nodes (15): main(), Test call-related queries, Test method name-related queries, Test ping functionality, Test loading CPG file, Test method-related queries, Test server connection, Test class-related queries (+7 more)
 
 ### Community 14 - "CoreError"
-Cohesion: 0.10
-Nodes (32): analyze(), analyze_blueprint(), AnalyzeRequest, AnalyzeResponse, BlueprintAnalyzeRequest, health(), JobStatus, BackgroundTasks (+24 more)
+Cohesion: 0.17
+Nodes (23): analyze(), analyze_blueprint(), AnalyzeRequest, AnalyzeResponse, BlueprintAnalyzeRequest, health(), JobStatus, BackgroundTasks (+15 more)
 
 ### Community 15 - "test_baseline.py"
-Cohesion: 0.12
-Nodes (10): Top-level output for one CVE against one codebase., RiskAssessmentResult, a_report(), client(), payload(), fixture, API tests. The API is pure transport, so these only check request handling, job, Blueprint+codebase path assessment stores artefacts in <codebase>/report/. (+2 more)
+Cohesion: 0.10
+Nodes (15): BlueprintNotFound, ConfigError, Typed failure modes.  The system is agent-only: there is no deterministic fallba, Configuration is missing or inconsistent., No trusted blueprint for this (CVE, component) pair., load_blueprint(), Blueprint lookup.  Blueprints are trusted research artefacts on disk, keyed by C, Load and validate one blueprint JSON file. (+7 more)
 
 ### Community 16 - "SCA Risk Rescoring Platform — POC"
 Cohesion: 0.29
 Nodes (6): API, Architecture, Layout, LLM, Quick start, Risk Assessment Agent (v2)
 
 ### Community 17 - "conftest.py"
-Cohesion: 0.10
-Nodes (20): datetime, _iso(), AIMessage, Any, BaseMessage, Path, Serialize one LangChain message for the conversation log., Accumulates one skill/probe's conversation and usage, then writes it. (+12 more)
+Cohesion: 0.15
+Nodes (13): ExploitPathStep, AIMessage, BaseMessage, Serialize one LangChain message for the conversation log., Replace the transcript with the full agent message list and sum usage., Record a non-tool structured LLM call (e.g. CVSS adjudication)., Pull token counts from a LangChain AIMessage (provider-agnostic)., serialize_message() (+5 more)
 
 ### Community 18 - "test_pipeline.py"
-Cohesion: 0.08
-Nodes (28): BlueprintCVSS, CVSS 3.1 severity bands — the only place this mapping exists., build_report(), Adjudicator, Score the verdict and assemble the report., adjudicate(), MetricJudgement, MetricJudgements (+20 more)
+Cohesion: 0.12
+Nodes (9): Base metrics, then requirements, then modified metrics.          Base segments a, Environmental score for a full vector. The only arithmetic in the system., A CVSS 3.1 vector, immutable, that can emit an environmental variant., score(), Vector, parametrize, The published base vector is a fact; findings go in the M* metrics., TestScore (+1 more)
 
 ### Community 19 - "Joern MCP Server"
 Cohesion: 0.20
@@ -220,32 +224,32 @@ Cohesion: 0.20
 Nodes (9): Joern MCP Server, 使用方法, 参考, 安装步骤, 开发说明, 环境要求, 贡献指南, 项目简介 (+1 more)
 
 ### Community 21 - "Settings"
-Cohesion: 0.12
-Nodes (22): The single source of configuration truth.  Everything that used to be duplicated, LLMUnavailable, The model endpoint could not be reached or refused the request., T, The only code that talks to the language model.  Two call shapes are needed and, Ask the model for one instance of `output_model`.      Schema-constrained via in, structured(), AnswerSource (+14 more)
+Cohesion: 0.16
+Nodes (20): LLMUnavailable, The model endpoint could not be reached or refused the request., T, The only code that talks to the language model.  Two call shapes are needed and, Ask the model for one instance of `output_model`.      Schema-constrained via in, structured(), llm_adjudicator(), make_llm_adjudicator() (+12 more)
 
 ### Community 22 - "config.py"
 Cohesion: 0.16
 Nodes (18): _elapsed_seconds(), get_scan(), list_completed_scans(), Any, get, Scan lifecycle REST endpoints., Comprehensive snapshot of a scan from its workspace files., Return metadata for scans whose status is completed. (+10 more)
 
 ### Community 23 - "S1 — Exploit Path Verification"
-Cohesion: 0.14
-Nodes (12): _envelope_text(), GortexClient, GortexError, Any, HTTP client for the gortex daemon's /v1 tool API.  The daemon exposes every MCP, Invoke a gortex tool by name and return its unwrapped payload., Indexed source files, optionally confined to one repo.          Rows carry ``rep, Callable nodes — functions, methods and closures — with ids and lines. (+4 more)
+Cohesion: 0.17
+Nodes (12): datetime, _iso(), Any, Path, Per-scan telemetry: full agent↔LLM transcripts, token usage, and metadata.json., Accumulates one skill/probe's conversation and usage, then writes it., Create a session.          Artefacts land in `output_root` when set; otherwise u, Pull token counts from an OpenAI-style completion object. (+4 more)
 
 ### Community 24 - "S2 — Security Misconfiguration Verification"
 Cohesion: 0.16
 Nodes (19): discover_skills(), plan_assessment(), Step 1 — load skill definitions from skills/., Step 2 — LLM selects skills from the catalog., Execute the full 8-step pipeline for ``scan_id``., run_pipeline(), build_final_assessment(), Any (+11 more)
 
 ### Community 25 - "S3 — Deployment Context Verification"
-Cohesion: 0.20
-Nodes (15): absorb(), _deployment_context(), _exploit_path_context(), _json_block(), _misconfig_context(), _mitigation_context(), Probe, ProbeContext (+7 more)
+Cohesion: 0.18
+Nodes (17): _dependencies_met(), A dependent probe needs its prerequisite to have run *and* produced input., absorb(), _deployment_context(), _exploit_path_context(), _json_block(), _misconfig_context(), _mitigation_context() (+9 more)
 
 ### Community 26 - "S4 — Mitigation Verification"
 Cohesion: 0.18
 Nodes (9): GraphifyCLI, JoernMCP, prepare_tools(), Any, Mock / real tool adapters used by skills (Joern MCP, Graphify CLI)., Stub for the Joern MCP server (CPG analysis)., Initialize mock Joern MCP and Graphify CLI connections., OpenAI function-calling schemas for mocked Joern tools. (+1 more)
 
 ### Community 27 - "Plan — SCA Risk Revision (Phase 1)"
-Cohesion: 0.05
-Nodes (32): BaseChatModel, _docs_text(), file_tools(), joern_mcp_tools(), _joern_query_sync(), _mcp_connections(), _patch_mcp_compat(), Any (+24 more)
+Cohesion: 0.18
+Nodes (6): We looked and found nothing" is legitimate evidence, unlike a failure., Models sometimes write {"name":"check_connection"} as content instead of tool_ca, Same tool+args more than twice gets a refusal; agent can still finish., A stuck agent must not look like a clean 'nothing found' result., _run(), TestRunAgent
 
 ### Community 28 - "prompts_cn.md"
 Cohesion: 0.33
@@ -264,24 +268,24 @@ Cohesion: 0.40
 Nodes (4): Fallback: stdio, mcp-joern (sfncat), Preferred: FastMCP SSE (stack-managed), Vendored / cloned third-party tools
 
 ### Community 32 - "core/__init__.py"
-Cohesion: 0.19
-Nodes (19): aggregate_evidence(), Any, Step 5 — Aggregate evidence from skill outputs into MDE input., Deterministically compile citations, path gates, and review flags.      Returns, load_blueprint_if_needed(), _parse_skill_output(), prepare_tool_bundle(), Any (+11 more)
+Cohesion: 0.28
+Nodes (15): load_blueprint_if_needed(), _parse_skill_output(), prepare_tool_bundle(), Any, Core 8-step Risk Assessment pipeline (v2).  Runs as a FastAPI background task. A, Step 3 — initialize mock Joern MCP + Graphify CLI., Step 4 — execute selected skills in dependency order., Isolated LLM tool-calling loop for one skill. (+7 more)
 
 ### Community 33 - "joern-run.sh"
 Cohesion: 0.50
 Nodes (3): joern-run.sh script, SL_LOGGING_LEVEL, TERM
 
 ### Community 35 - "api/__init__.py"
-Cohesion: 0.17
-Nodes (16): Any, Unit tests for the composed taint analysis, against a stub gortex client.  These, A substring test for sink `yaml.load` also fires on the mitigation., `handle_upload` contains the letters of sink `load`., A Go handler takes (w, r); only r reaches the sink, so only r is evidence., A sink inside an elided closure body must not read as 'not exploitable'., Serves canned CFGs so the tests need no daemon., _stmt() (+8 more)
+Cohesion: 0.36
+Nodes (7): adjudicate(), Answer every environmental metric, then enforce the policy clamps., answers_of(), blueprint(), Scoring tests: the vector value object, metric adjudication, and the arithmetic., TestAdjudicate, verdict()
 
 ### Community 36 - "post"
-Cohesion: 0.25
-Nodes (7): parse_document(), Final hop: the vulnerable sink, three functions away from the request., handle_upload(), Middle hop: normalises the payload and forwards it to the parser., post, Entry point: untrusted YAML arrives here and is handed down two more hops., upload()
+Cohesion: 0.22
+Nodes (12): ActivationState, AssessmentPlan, How this CVE will be assessed. Produced once, in core.policy., Unknown basis means we cannot justify a rescore; flag for an analyst., The answer to "is the CVE live here?"., _activation_state(), _from_tristate(), _rationale() (+4 more)
 
 ### Community 39 - "tools.py"
-Cohesion: 0.36
-Nodes (4): _Analyzer, find_taint_paths(), Treat every parameter of ``symbol_id`` as request-controlled., Find source-to-sink paths for the blueprint's sinks.      ``sinks`` are blueprin
+Cohesion: 0.21
+Nodes (13): joern_mcp_tools(), _joern_query_sync(), _mcp_connections(), _patch_mcp_compat(), Any, The toolbelt handed to probe agents.  Two families:    * filesystem tools — read, Synchronous Joern /query-sync for use inside LangChain tools., Run the vendored MCP server as a subprocess, preferring uv. (+5 more)
 
 ### Community 40 - "_generate.py"
 Cohesion: 0.48
@@ -296,12 +300,20 @@ Cohesion: 0.30
 Nodes (11): conversations_dir(), create_workspace(), Path, File-based workspace helpers for scan state under workspace/{scan_id}/., Create workspace/{scan_id}/ and conversations/ subfolder., Return parsed JSON, or None if the file is missing or unreadable., Persist a raw LLM conversation log under conversations/., read_json() (+3 more)
 
 ### Community 43 - "test_baseline.py"
-Cohesion: 0.20
-Nodes (12): load_recorded_evidence(), Build an EvidenceSet from a recorded cassette., Any, Stable snapshot of a risk assessment, for golden-file comparison.  Deliberately, Reduce a RiskAssessmentResult to its reproducible decision surface., stable_snapshot(), _assert_matches_golden(), Golden baseline — pins the decision the pipeline reaches for the sample project. (+4 more)
+Cohesion: 0.23
+Nodes (10): Any, Stable snapshot of a risk assessment, for golden-file comparison.  Deliberately, Reduce a RiskAssessmentResult to its reproducible decision surface., stable_snapshot(), _assert_matches_golden(), Golden baseline — pins the decision the pipeline reaches for the sample project., The rebuilt core reaches the same decision as the pipeline it replaces., Replay the recorded probe evidence instead of calling live agents. (+2 more)
 
 ### Community 44 - "test_agent.py"
-Cohesion: 0.43
-Nodes (7): blueprint_sinks(), main(), Path, Experiment: can gortex CFG facts reproduce the taint evidence S1 needs?  Runs th, Route handlers, from the contracts layer, as request-controlled entries., route_entry_points(), run()
+Cohesion: 0.24
+Nodes (7): _docs_text(), Path, Concatenate readable documentation files up to a character budget., Force a pathlib-safe relative glob. Absolute patterns raise on Path.glob., _relative_glob(), Agent loop and toolbelt tests, driven by a scripted model rather than Ollama.  T, TestRelativeGlob
+
+### Community 45 - "file_tools"
+Cohesion: 0.31
+Nodes (3): file_tools(), Filesystem tools scoped to one codebase (and optional product docs)., TestFileTools
+
+### Community 46 - "assess"
+Cohesion: 0.28
+Nodes (8): Top-level output for one CVE against one codebase., RiskAssessmentResult, assess(), build_report(), Adjudicator, Score the verdict and assemble the report., Assess one CVE against one codebase.      Provide either:       - `sbom` + `cve_, a_report()
 
 ### Community 47 - "CVE-2021-23337-lodash/app/package.json"
 Cohesion: 0.22
@@ -346,6 +358,10 @@ Nodes (6): node-ipc, dependencies, node-ipc, name, private, version
 ### Community 58 - "Sample CVE assessment dataset"
 Cohesion: 0.33
 Nodes (5): Languages (3 CVEs each), Layout, Notes, Regenerate, Sample CVE assessment dataset
+
+### Community 59 - "aggregate_evidence"
+Cohesion: 0.40
+Nodes (4): aggregate_evidence(), Any, Step 5 — Aggregate evidence from skill outputs into MDE input., Deterministically compile citations, path gates, and review flags.      Returns
 
 ### Community 60 - "write_generated_config"
 Cohesion: 0.40
@@ -394,22 +410,22 @@ Nodes (3): Objectives, Output, S1 — Exploit Path Verification
 ## Knowledge Gaps
 - **110 isolated node(s):** `joern-run.sh script`, `TERM`, `SL_LOGGING_LEVEL`, `samples/gin-demo`, `samples/xtext-demo` (+105 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `file_tools()` connect `Plan — SCA Risk Revision (Phase 1)` to `EvidenceUnavailable`, `joern.py`, `plan`, `S1 — Exploit Path Verification`?**
-  _High betweenness centrality (0.098) - this node is a cross-community bridge._
-- **Why does `GortexClient` connect `S1 — Exploit Path Verification` to `test_agent.py`, `test_agent.py`, `tools.py`?**
-  _High betweenness centrality (0.076) - this node is a cross-community bridge._
-- **Why does `EvidenceSet` connect `BlueprintStore` to `joern.py`, `plan`, `test_baseline.py`, `test_pipeline.py`, `Settings`, `S3 — Deployment Context Verification`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
-- **Are the 4 inferred relationships involving `GortexClient` (e.g. with `_Analyzer` and `_Statement`) actually correct?**
-  _`GortexClient` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `EvidenceSet` connect `BlueprintStore` to `api/__init__.py`, `post`, `joern.py`, `plan`, `BaseModel`, `assess`, `conftest.py`, `Settings`, `S3 — Deployment Context Verification`?**
+  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **Why does `ScanSession` connect `Settings` to `test_agent.py`, `joern.py`, `EvidenceUnavailable`, `assess`, `test_baseline.py`, `conftest.py`, `test_pipeline.py`, `S1 — Exploit Path Verification`, `S3 — Deployment Context Verification`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `assess()` connect `assess` to `EvidenceSet`, `BlueprintStore`, `BaseModel`, `joern.py`, `plan`, `test_baseline.py`, `CoreError`, `test_baseline.py`, `conftest.py`, `Settings`, `S1 — Exploit Path Verification`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `ScanSession` (e.g. with `_State` and `Probe`) actually correct?**
   _`ScanSession` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `joern-run.sh script`, `TERM`, `SL_LOGGING_LEVEL` to the rest of the system?**
   _110 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `EvidenceSet` be split into smaller, more focused modules?**
+  _Cohesion score 0.12380952380952381 - nodes in this community are weakly interconnected._
 - **Should `joern_remote` be split into smaller, more focused modules?**
   _Cohesion score 0.05146242132543503 - nodes in this community are weakly interconnected._

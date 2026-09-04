@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "cve_id": "FIXTURE-MULTIHOP",
+  "cvss": {
+    "score": 9.8,
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+  },
+  "affected_components": [
+    {
+      "name": "PyYAML",
+      "purl": "pkg:pypi/pyyaml@5.3.1"
+    }
+  ],
+  "upstream_artifacts": {
+    "functions": ["yaml.full_load", "yaml.load", "FullLoader"],
+    "files": []
+  },
+  "notes": "Synthetic fixture: request -> handle_upload -> parse_document -> yaml.full_load. Exists to test interprocedural taint stitching, not a real CVE."
+}

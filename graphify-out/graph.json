@@ -32,8 +32,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_evidence",
-      "community": 59,
-      "community_name": "aggregate_evidence",
+      "community": 32,
+      "community_name": "core/__init__.py",
       "norm_label": "evidence.py"
     },
     {
@@ -43,8 +43,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "agent_evidence_aggregate_evidence",
-      "community": 59,
-      "community_name": "aggregate_evidence",
+      "community": 32,
+      "community_name": "core/__init__.py",
       "norm_label": "aggregate_evidence()"
     },
     {
@@ -54,8 +54,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "agent_evidence_py_any",
-      "community": 59,
-      "community_name": "aggregate_evidence",
+      "community": 32,
+      "community_name": "core/__init__.py",
       "norm_label": "any"
     },
     {
@@ -65,8 +65,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_evidence_rationale_1",
-      "community": 59,
-      "community_name": "aggregate_evidence",
+      "community": 32,
+      "community_name": "core/__init__.py",
       "norm_label": "step 5 \u2014 aggregate evidence from skill outputs into mde input."
     },
     {
@@ -76,9 +76,834 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "agent_evidence_rationale_13",
-      "community": 59,
-      "community_name": "aggregate_evidence",
+      "community": 32,
+      "community_name": "core/__init__.py",
       "norm_label": "deterministically compile citations, path gates, and review flags.      returns"
+    },
+    {
+      "label": "gortex/__init__.py",
+      "file_type": "code",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agent_gortex_init",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "gortex/__init__.py"
+    },
+    {
+      "label": "Gortex-backed code intelligence: HTTP client and interprocedural taint.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agent_gortex_init_rationale_1",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "gortex-backed code intelligence: http client and interprocedural taint."
+    },
+    {
+      "label": "client.py",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agent_gortex_client",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "client.py"
+    },
+    {
+      "label": "GortexError",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexerror",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "gortexerror"
+    },
+    {
+      "label": "RuntimeError",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "runtimeerror",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
+      "norm_label": "runtimeerror"
+    },
+    {
+      "label": "GortexClient",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "gortexclient"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_init",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".close()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_close",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".close()"
+    },
+    {
+      "label": ".__enter__()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_enter",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".__enter__()"
+    },
+    {
+      "label": ".__exit__()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_exit",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".__exit__()"
+    },
+    {
+      "label": ".health()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L87",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_health",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".health()"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "agent_gortex_client_py_any",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "any"
+    },
+    {
+      "label": ".is_up()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_is_up",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".is_up()"
+    },
+    {
+      "label": ".call()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_call",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".call()"
+    },
+    {
+      "label": ".track()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_track",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".track()"
+    },
+    {
+      "label": ".untrack()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_untrack",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".untrack()"
+    },
+    {
+      "label": ".source_files()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_source_files",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".source_files()"
+    },
+    {
+      "label": ".functions()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_functions",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".functions()"
+    },
+    {
+      "label": ".search_symbols()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L173",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_search_symbols",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".search_symbols()"
+    },
+    {
+      "label": ".get_cfg()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L177",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_get_cfg",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".get_cfg()"
+    },
+    {
+      "label": ".def_use()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L180",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_def_use",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".def_use()"
+    },
+    {
+      "label": ".contracts()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L183",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_contracts",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".contracts()"
+    },
+    {
+      "label": ".sast()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L186",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_sast",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".sast()"
+    },
+    {
+      "label": ".named_query()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L189",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_named_query",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".named_query()"
+    },
+    {
+      "label": ".search_text()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L192",
+      "_origin": "ast",
+      "id": "agent_gortex_client_gortexclient_search_text",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": ".search_text()"
+    },
+    {
+      "label": "_envelope_text()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L197",
+      "_origin": "ast",
+      "id": "agent_gortex_client_envelope_text",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "_envelope_text()"
+    },
+    {
+      "label": "_unwrap()",
+      "file_type": "code",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L206",
+      "_origin": "ast",
+      "id": "agent_gortex_client_unwrap",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "_unwrap()"
+    },
+    {
+      "label": "HTTP client for the gortex daemon's /v1 tool API.  The daemon exposes every MCP",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agent_gortex_client_rationale_1",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "http client for the gortex daemon's /v1 tool api.  the daemon exposes every mcp"
+    },
+    {
+      "label": "A gortex tool call failed or the daemon is unreachable.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "agent_gortex_client_rationale_54",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "a gortex tool call failed or the daemon is unreachable."
+    },
+    {
+      "label": "Thin synchronous client over the gortex daemon HTTP surface.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "agent_gortex_client_rationale_58",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "thin synchronous client over the gortex daemon http surface."
+    },
+    {
+      "label": "Invoke a gortex tool by name and return its unwrapped payload.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L102",
+      "_origin": "ast",
+      "id": "agent_gortex_client_rationale_102",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "invoke a gortex tool by name and return its unwrapped payload."
+    },
+    {
+      "label": "Indexed source files, optionally confined to one repo.          Rows carry ``rep",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "agent_gortex_client_rationale_123",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "indexed source files, optionally confined to one repo.          rows carry ``rep"
+    },
+    {
+      "label": "Callable nodes \u2014 functions, methods and closures \u2014 with ids and lines.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L152",
+      "_origin": "ast",
+      "id": "agent_gortex_client_rationale_152",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "callable nodes \u2014 functions, methods and closures \u2014 with ids and lines."
+    },
+    {
+      "label": "Pull the JSON body out of an MCP ``{\"content\":[{\"text\": \"...\"}]}`` envelope.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L207",
+      "_origin": "ast",
+      "id": "agent_gortex_client_rationale_207",
+      "community": 23,
+      "community_name": "S1 \u2014 Exploit Path Verification",
+      "norm_label": "pull the json body out of an mcp ``{\"content\":[{\"text\": \"...\"}]}`` envelope."
+    },
+    {
+      "label": "taint.py",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agent_gortex_taint",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "taint.py"
+    },
+    {
+      "label": "TaintStep",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_taintstep",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "taintstep"
+    },
+    {
+      "label": ".to_dict()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_taintstep_to_dict",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": ".to_dict()"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_py_any",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "any"
+    },
+    {
+      "label": "TaintFinding",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_taintfinding",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "taintfinding"
+    },
+    {
+      "label": ".interprocedural()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_taintfinding_interprocedural",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": ".interprocedural()"
+    },
+    {
+      "label": ".to_dict()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_taintfinding_to_dict",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": ".to_dict()"
+    },
+    {
+      "label": "_Statement",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L134",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_statement",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_statement"
+    },
+    {
+      "label": "_flatten_cfg()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L142",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_flatten_cfg",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_flatten_cfg()"
+    },
+    {
+      "label": "_leaf()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L168",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_leaf",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_leaf()"
+    },
+    {
+      "label": "_matches_sink()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L173",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_matches_sink",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_matches_sink()"
+    },
+    {
+      "label": "_matches_source()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L189",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_matches_source",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_matches_source()"
+    },
+    {
+      "label": "_param_name()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L198",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_param_name",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_param_name()"
+    },
+    {
+      "label": "_split_args()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L208",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_split_args",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_split_args()"
+    },
+    {
+      "label": "_tainted_arg_positions()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L232",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_tainted_arg_positions",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_tainted_arg_positions()"
+    },
+    {
+      "label": "_Analyzer",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L249",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": "_analyzer"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L250",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_init",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".load_symbols()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L269",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_load_symbols",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": ".load_symbols()"
+    },
+    {
+      "label": ".symbol_ids()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L278",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_symbol_ids",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": ".symbol_ids()"
+    },
+    {
+      "label": ".cfg()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L281",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_cfg",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": ".cfg()"
+    },
+    {
+      "label": ".analyze_all()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L290",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_analyze_all",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": ".analyze_all()"
+    },
+    {
+      "label": ".analyze_entry()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L294",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_analyze_entry",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": ".analyze_entry()"
+    },
+    {
+      "label": ".analyze()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L298",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_analyze",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": ".analyze()"
+    },
+    {
+      "label": "._follow_calls()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L427",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_analyzer_follow_calls",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "._follow_calls()"
+    },
+    {
+      "label": "find_taint_paths()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L482",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_find_taint_paths",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": "find_taint_paths()"
+    },
+    {
+      "label": "_text_only_findings()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L553",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_text_only_findings",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_text_only_findings()"
+    },
+    {
+      "label": "_dedupe()",
+      "file_type": "code",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L622",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_dedupe",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "_dedupe()"
+    },
+    {
+      "label": "Interprocedural taint analysis composed from gortex CFG facts.  Gortex ships ``t",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_1",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "interprocedural taint analysis composed from gortex cfg facts.  gortex ships ``t"
+    },
+    {
+      "label": "One statement on a taint path, citable as file/line evidence.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_67",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "one statement on a taint path, citable as file/line evidence."
+    },
+    {
+      "label": "A source-to-sink path with the statements that justify it.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L102",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_102",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "a source-to-sink path with the statements that justify it."
+    },
+    {
+      "label": "Statements in a walkable order: parameters first, then block order.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L143",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_143",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "statements in a walkable order: parameters first, then block order."
+    },
+    {
+      "label": "Last dotted segment: ``yaml.full_load`` \u2192 ``full_load``.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L169",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_169",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "last dotted segment: ``yaml.full_load`` \u2192 ``full_load``."
+    },
+    {
+      "label": "Blueprint sinks are dotted names; match the final segment as a whole word.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L174",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_174",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "blueprint sinks are dotted names; match the final segment as a whole word."
+    },
+    {
+      "label": "Source patterns are statement shapes; match them literally.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_190",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "source patterns are statement shapes; match them literally."
+    },
+    {
+      "label": "Parameter identifier \u2014 ``defs`` is more reliable than the raw text.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L199",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_199",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "parameter identifier \u2014 ``defs`` is more reliable than the raw text."
+    },
+    {
+      "label": "Split a call's argument list on top-level commas.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L209",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_209",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "split a call's argument list on top-level commas."
+    },
+    {
+      "label": "Which argument positions of ``callee(...)`` hold a tainted variable.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L233",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_233",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "which argument positions of ``callee(...)`` hold a tainted variable."
+    },
+    {
+      "label": "Treat every parameter of ``symbol_id`` as request-controlled.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L295",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_295",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": "treat every parameter of ``symbol_id`` as request-controlled."
+    },
+    {
+      "label": "Find source-to-sink paths for the blueprint's sinks.      ``sinks`` are blueprin",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L492",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_492",
+      "community": 39,
+      "community_name": "tools.py",
+      "norm_label": "find source-to-sink paths for the blueprint's sinks.      ``sinks`` are blueprin"
+    },
+    {
+      "label": "Sinks that appear in source but in no CFG.      Gortex elides closure bodies fro",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L560",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_560",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "sinks that appear in source but in no cfg.      gortex elides closure bodies fro"
+    },
+    {
+      "label": "Collapse paths that end at the same sink statement, keeping the longest.",
+      "file_type": "rationale",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L623",
+      "_origin": "ast",
+      "id": "agent_gortex_taint_rationale_623",
+      "community": 3,
+      "community_name": "test_agent.py",
+      "norm_label": "collapse paths that end at the same sink statement, keeping the longest."
     },
     {
       "label": "agent/llm.py",
@@ -1979,8 +2804,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_config",
-      "community": 5,
-      "community_name": "joern.py",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "core/config.py"
     },
     {
@@ -2100,8 +2925,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_config_rationale_1",
-      "community": 5,
-      "community_name": "joern.py",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "the single source of configuration truth.  everything that used to be duplicated"
     },
     {
@@ -2133,8 +2958,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_errors",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "errors.py"
     },
     {
@@ -2166,8 +2991,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "deprecated_core_errors_configerror",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "configerror"
     },
     {
@@ -2177,8 +3002,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "deprecated_core_errors_blueprintnotfound",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "blueprintnotfound"
     },
     {
@@ -2232,8 +3057,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_errors_rationale_1",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "typed failure modes.  the system is agent-only: there is no deterministic fallba"
     },
     {
@@ -2254,8 +3079,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "deprecated_core_errors_rationale_18",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "configuration is missing or inconsistent."
     },
     {
@@ -2265,8 +3090,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "deprecated_core_errors_rationale_22",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "no trusted blueprint for this (cve, component) pair."
     },
     {
@@ -2760,8 +3585,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "str",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "str"
     },
     {
@@ -2771,8 +3596,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "enum",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "enum"
     },
     {
@@ -2793,8 +3618,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "deprecated_core_models_confidence",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "confidence"
     },
     {
@@ -2815,8 +3640,8 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "deprecated_core_models_activationbasis",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "activationbasis"
     },
     {
@@ -2826,8 +3651,8 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "deprecated_core_models_activationstate",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "activationstate"
     },
     {
@@ -2837,8 +3662,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "deprecated_core_models_answersource",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "answersource"
     },
     {
@@ -2848,8 +3673,8 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "deprecated_core_models_severity",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "severity"
     },
     {
@@ -2859,8 +3684,8 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "deprecated_core_models_severity_from_score",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".from_score()"
     },
     {
@@ -2870,8 +3695,8 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "deprecated_core_models_blueprintcvss",
-      "community": 6,
-      "community_name": "plan",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "blueprintcvss"
     },
     {
@@ -3090,8 +3915,8 @@
       "source_location": "L288",
       "_origin": "ast",
       "id": "deprecated_core_models_exploitpathstep",
-      "community": 17,
-      "community_name": "conftest.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "exploitpathstep"
     },
     {
@@ -3101,8 +3926,8 @@
       "source_location": "L295",
       "_origin": "ast",
       "id": "deprecated_core_models_exploitpath",
-      "community": 2,
-      "community_name": "BlueprintStore",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "exploitpath"
     },
     {
@@ -3112,8 +3937,8 @@
       "source_location": "L304",
       "_origin": "ast",
       "id": "deprecated_core_models_misconfigurationfinding",
-      "community": 2,
-      "community_name": "BlueprintStore",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "misconfigurationfinding"
     },
     {
@@ -3167,8 +3992,8 @@
       "source_location": "L350",
       "_origin": "ast",
       "id": "deprecated_core_models_evidencegap",
-      "community": 5,
-      "community_name": "joern.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "evidencegap"
     },
     {
@@ -3277,8 +4102,8 @@
       "source_location": "L432",
       "_origin": "ast",
       "id": "deprecated_core_models_assessmentplan",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "assessmentplan"
     },
     {
@@ -3288,8 +4113,8 @@
       "source_location": "L442",
       "_origin": "ast",
       "id": "deprecated_core_models_assessmentplan_skip_rescoring",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": ".skip_rescoring()"
     },
     {
@@ -3321,8 +4146,8 @@
       "source_location": "L472",
       "_origin": "ast",
       "id": "deprecated_core_models_riskassessmentresult",
-      "community": 46,
-      "community_name": "assess",
+      "community": 15,
+      "community_name": "test_baseline.py",
       "norm_label": "riskassessmentresult"
     },
     {
@@ -3332,8 +4157,8 @@
       "source_location": "L496",
       "_origin": "ast",
       "id": "deprecated_core_models_riskassessmentresult_score_delta",
-      "community": 46,
-      "community_name": "assess",
+      "community": 15,
+      "community_name": "test_baseline.py",
       "norm_label": ".score_delta()"
     },
     {
@@ -3376,8 +4201,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_51",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "qualitative confidence, used wherever a coarse grade is enough."
     },
     {
@@ -3398,8 +4223,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_72",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "how we decide whether a cve is live in this product."
     },
     {
@@ -3409,8 +4234,8 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_83",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "the answer to \"is the cve live here?\"."
     },
     {
@@ -3420,8 +4245,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_92",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "where a cvss metric answer came from."
     },
     {
@@ -3431,8 +4256,8 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_108",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "cvss 3.1 severity bands \u2014 the only place this mapping exists."
     },
     {
@@ -3508,8 +4333,8 @@
       "source_location": "L351",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_351",
-      "community": 5,
-      "community_name": "joern.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "a probe that could not run. never silently treated as a negative result."
     },
     {
@@ -3552,8 +4377,8 @@
       "source_location": "L433",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_433",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "how this cve will be assessed. produced once, in core.policy."
     },
     {
@@ -3563,8 +4388,8 @@
       "source_location": "L443",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_443",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "unknown basis means we cannot justify a rescore; flag for an analyst."
     },
     {
@@ -3585,8 +4410,8 @@
       "source_location": "L473",
       "_origin": "ast",
       "id": "deprecated_core_models_rationale_473",
-      "community": 46,
-      "community_name": "assess",
+      "community": 15,
+      "community_name": "test_baseline.py",
       "norm_label": "top-level output for one cve against one codebase."
     },
     {
@@ -3607,8 +4432,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "deprecated_core_pipeline_assess",
-      "community": 46,
-      "community_name": "assess",
+      "community": 5,
+      "community_name": "joern.py",
       "norm_label": "assess()"
     },
     {
@@ -3640,8 +4465,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "deprecated_core_pipeline_py_adjudicator",
-      "community": 46,
-      "community_name": "assess",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "adjudicator"
     },
     {
@@ -3684,8 +4509,8 @@
       "source_location": "L274",
       "_origin": "ast",
       "id": "deprecated_core_pipeline_dependencies_met",
-      "community": 25,
-      "community_name": "S3 \u2014 Deployment Context Verification",
+      "community": 5,
+      "community_name": "joern.py",
       "norm_label": "_dependencies_met()"
     },
     {
@@ -3750,8 +4575,8 @@
       "source_location": "L369",
       "_origin": "ast",
       "id": "deprecated_core_pipeline_build_report",
-      "community": 46,
-      "community_name": "assess",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "build_report()"
     },
     {
@@ -3772,8 +4597,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "deprecated_core_pipeline_rationale_66",
-      "community": 46,
-      "community_name": "assess",
+      "community": 5,
+      "community_name": "joern.py",
       "norm_label": "assess one cve against one codebase.      provide either:       - `sbom` + `cve_"
     },
     {
@@ -3816,8 +4641,8 @@
       "source_location": "L275",
       "_origin": "ast",
       "id": "deprecated_core_pipeline_rationale_275",
-      "community": 25,
-      "community_name": "S3 \u2014 Deployment Context Verification",
+      "community": 5,
+      "community_name": "joern.py",
       "norm_label": "a dependent probe needs its prerequisite to have run *and* produced input."
     },
     {
@@ -3882,8 +4707,8 @@
       "source_location": "L378",
       "_origin": "ast",
       "id": "deprecated_core_pipeline_rationale_378",
-      "community": 46,
-      "community_name": "assess",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "score the verdict and assemble the report."
     },
     {
@@ -3893,8 +4718,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_policy",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "policy.py"
     },
     {
@@ -3915,8 +4740,8 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "deprecated_core_policy_choose_basis",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "_choose_basis()"
     },
     {
@@ -3937,8 +4762,8 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "deprecated_core_policy_activation_state",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "_activation_state()"
     },
     {
@@ -3948,8 +4773,8 @@
       "source_location": "L186",
       "_origin": "ast",
       "id": "deprecated_core_policy_unsafe_config",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "_unsafe_config()"
     },
     {
@@ -3959,8 +4784,8 @@
       "source_location": "L199",
       "_origin": "ast",
       "id": "deprecated_core_policy_from_tristate",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "_from_tristate()"
     },
     {
@@ -3970,8 +4795,8 @@
       "source_location": "L205",
       "_origin": "ast",
       "id": "deprecated_core_policy_rationale",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "_rationale()"
     },
     {
@@ -4025,8 +4850,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_policy_rationale_1",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "the only place that decides anything about risk.  three steps, in order:      pl"
     },
     {
@@ -4047,8 +4872,8 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "deprecated_core_policy_rationale_87",
-      "community": 0,
-      "community_name": "EvidenceSet",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "pick how activation will be judged. order matters: most specific first."
     },
     {
@@ -4069,8 +4894,8 @@
       "source_location": "L141",
       "_origin": "ast",
       "id": "deprecated_core_policy_rationale_141",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "is the cve live here? answered per basis, from evidence only."
     },
     {
@@ -4080,8 +4905,8 @@
       "source_location": "L187",
       "_origin": "ast",
       "id": "deprecated_core_policy_rationale_187",
-      "community": 36,
-      "community_name": "post",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "true if unsafe config found, false if searched and clean, none if unknown."
     },
     {
@@ -4399,8 +5224,8 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "deprecated_core_scoring_metricjudgement",
-      "community": 21,
-      "community_name": "Settings",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "metricjudgement"
     },
     {
@@ -4410,8 +5235,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "deprecated_core_scoring_py_basemodel",
-      "community": 21,
-      "community_name": "Settings",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "basemodel"
     },
     {
@@ -4421,8 +5246,8 @@
       "source_location": "L154",
       "_origin": "ast",
       "id": "deprecated_core_scoring_metricjudgements",
-      "community": 21,
-      "community_name": "Settings",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "metricjudgements"
     },
     {
@@ -4432,8 +5257,8 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "deprecated_core_scoring_adjudicate",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "adjudicate()"
     },
     {
@@ -4443,8 +5268,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "deprecated_core_scoring_py_adjudicator",
-      "community": 21,
-      "community_name": "Settings",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "adjudicator"
     },
     {
@@ -4454,8 +5279,8 @@
       "source_location": "L218",
       "_origin": "ast",
       "id": "deprecated_core_scoring_valid",
-      "community": 21,
-      "community_name": "Settings",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "_valid()"
     },
     {
@@ -4531,8 +5356,8 @@
       "source_location": "L147",
       "_origin": "ast",
       "id": "deprecated_core_scoring_rationale_147",
-      "community": 21,
-      "community_name": "Settings",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "one metric answer from the model."
     },
     {
@@ -4542,8 +5367,8 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "deprecated_core_scoring_rationale_169",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "answer every environmental metric, then enforce the policy clamps."
     },
     {
@@ -4553,8 +5378,8 @@
       "source_location": "L219",
       "_origin": "ast",
       "id": "deprecated_core_scoring_rationale_219",
-      "community": 21,
-      "community_name": "Settings",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "keep only answers that were asked for and are in the cvss vocabulary."
     },
     {
@@ -4597,8 +5422,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_store",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "store.py"
     },
     {
@@ -4630,8 +5455,8 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "deprecated_core_store_load_blueprint",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "load_blueprint()"
     },
     {
@@ -4707,8 +5532,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_store_rationale_1",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "blueprint lookup.  blueprints are trusted research artefacts on disk, keyed by c"
     },
     {
@@ -4740,8 +5565,8 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "deprecated_core_store_rationale_79",
-      "community": 15,
-      "community_name": "test_baseline.py",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "load and validate one blueprint json file."
     },
     {
@@ -4773,8 +5598,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_telemetry",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "telemetry.py"
     },
     {
@@ -4784,8 +5609,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_utc_now",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "_utc_now()"
     },
     {
@@ -4795,8 +5620,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "datetime",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "datetime"
     },
     {
@@ -4806,8 +5631,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_iso",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "_iso()"
     },
     {
@@ -4861,8 +5686,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_py_any",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "any"
     },
     {
@@ -4894,8 +5719,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_usage_from_openai_completion",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "usage_from_openai_completion()"
     },
     {
@@ -4927,8 +5752,8 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_skilltelemetry",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "skilltelemetry"
     },
     {
@@ -4938,8 +5763,8 @@
       "source_location": "L157",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_skilltelemetry_as_dict",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": ".as_dict()"
     },
     {
@@ -4949,8 +5774,8 @@
       "source_location": "L161",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_skillrecorder",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "skillrecorder"
     },
     {
@@ -4960,8 +5785,8 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_skillrecorder_init",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": ".__init__()"
     },
     {
@@ -4993,8 +5818,8 @@
       "source_location": "L210",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_skillrecorder_finish",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": ".finish()"
     },
     {
@@ -5015,8 +5840,8 @@
       "source_location": "L257",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_scansession_init",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": ".__init__()"
     },
     {
@@ -5026,8 +5851,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_py_path",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "path"
     },
     {
@@ -5037,8 +5862,8 @@
       "source_location": "L283",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_scansession_create",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 11,
+      "community_name": "EvidenceUnavailable",
       "norm_label": ".create()"
     },
     {
@@ -5048,8 +5873,8 @@
       "source_location": "L314",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_scansession_begin_skill",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": ".begin_skill()"
     },
     {
@@ -5059,8 +5884,8 @@
       "source_location": "L317",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_scansession_register_skill",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "._register_skill()"
     },
     {
@@ -5081,8 +5906,8 @@
       "source_location": "L327",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_scansession_finish",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": ".finish()"
     },
     {
@@ -5092,8 +5917,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_rationale_1",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 21,
+      "community_name": "Settings",
       "norm_label": "per-scan telemetry: full agent\u2194llm transcripts, token usage, and metadata.json."
     },
     {
@@ -5114,8 +5939,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_rationale_92",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "pull token counts from an openai-style completion object."
     },
     {
@@ -5136,8 +5961,8 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_rationale_162",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 17,
+      "community_name": "conftest.py",
       "norm_label": "accumulates one skill/probe's conversation and usage, then writes it."
     },
     {
@@ -5180,8 +6005,8 @@
       "source_location": "L294",
       "_origin": "ast",
       "id": "deprecated_core_telemetry_rationale_294",
-      "community": 23,
-      "community_name": "S1 \u2014 Exploit Path Verification",
+      "community": 11,
+      "community_name": "EvidenceUnavailable",
       "norm_label": "create a session.          artefacts land in `output_root` when set; otherwise u"
     },
     {
@@ -5191,8 +6016,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_tools",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "tools.py"
     },
     {
@@ -5202,8 +6027,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "deprecated_core_tools_relative_glob",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "_relative_glob()"
     },
     {
@@ -5213,8 +6038,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "deprecated_core_tools_py_path",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "path"
     },
     {
@@ -5224,8 +6049,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "deprecated_core_tools_file_tools",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "file_tools()"
     },
     {
@@ -5235,8 +6060,8 @@
       "source_location": "L145",
       "_origin": "ast",
       "id": "deprecated_core_tools_docs_text",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "_docs_text()"
     },
     {
@@ -5246,8 +6071,8 @@
       "source_location": "L168",
       "_origin": "ast",
       "id": "deprecated_core_tools_joern_query_sync",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "_joern_query_sync()"
     },
     {
@@ -5257,8 +6082,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "deprecated_core_tools_py_any",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "any"
     },
     {
@@ -5279,8 +6104,8 @@
       "source_location": "L255",
       "_origin": "ast",
       "id": "deprecated_core_tools_sse_ready",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "_sse_ready()"
     },
     {
@@ -5290,8 +6115,8 @@
       "source_location": "L265",
       "_origin": "ast",
       "id": "deprecated_core_tools_stdio_connection",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "_stdio_connection()"
     },
     {
@@ -5301,8 +6126,8 @@
       "source_location": "L295",
       "_origin": "ast",
       "id": "deprecated_core_tools_mcp_connections",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "_mcp_connections()"
     },
     {
@@ -5312,8 +6137,8 @@
       "source_location": "L306",
       "_origin": "ast",
       "id": "deprecated_core_tools_patch_mcp_compat",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "_patch_mcp_compat()"
     },
     {
@@ -5323,8 +6148,8 @@
       "source_location": "L315",
       "_origin": "ast",
       "id": "deprecated_core_tools_joern_mcp_tools",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "joern_mcp_tools()"
     },
     {
@@ -5334,8 +6159,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_1",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "the toolbelt handed to probe agents.  two families:    * filesystem tools \u2014 read"
     },
     {
@@ -5345,8 +6170,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_42",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "force a pathlib-safe relative glob. absolute patterns raise on path.glob."
     },
     {
@@ -5356,8 +6181,8 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_74",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "filesystem tools scoped to one codebase (and optional product docs)."
     },
     {
@@ -5367,8 +6192,8 @@
       "source_location": "L146",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_146",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "concatenate readable documentation files up to a character budget."
     },
     {
@@ -5378,8 +6203,8 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_169",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "synchronous joern /query-sync for use inside langchain tools."
     },
     {
@@ -5400,8 +6225,8 @@
       "source_location": "L266",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_266",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "run the vendored mcp server as a subprocess, preferring uv."
     },
     {
@@ -5411,8 +6236,8 @@
       "source_location": "L296",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_296",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "one entry per mcp server. sse when it is up, otherwise a subprocess."
     },
     {
@@ -5422,8 +6247,8 @@
       "source_location": "L307",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_307",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "mcp >= 1.23 renamed streamablehttp_client; adapters still want the old name."
     },
     {
@@ -5433,8 +6258,8 @@
       "source_location": "L316",
       "_origin": "ast",
       "id": "deprecated_core_tools_rationale_316",
-      "community": 39,
-      "community_name": "tools.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "yield mcp-joern cpg tools, or an empty list if the server is unreachable."
     },
     {
@@ -5444,8 +6269,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_cassettes_init",
-      "community": 2,
-      "community_name": "BlueprintStore",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "cassettes/__init__.py"
     },
     {
@@ -5455,8 +6280,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "deprecated_tests_cassettes_init_load_recorded_evidence",
-      "community": 2,
-      "community_name": "BlueprintStore",
+      "community": 43,
+      "community_name": "test_baseline.py",
       "norm_label": "load_recorded_evidence()"
     },
     {
@@ -5466,8 +6291,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_cassettes_init_rationale_1",
-      "community": 2,
-      "community_name": "BlueprintStore",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "recorded probe evidence, for offline deterministic tests.  an agent-only pipelin"
     },
     {
@@ -5477,8 +6302,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "deprecated_tests_cassettes_init_rationale_27",
-      "community": 2,
-      "community_name": "BlueprintStore",
+      "community": 43,
+      "community_name": "test_baseline.py",
       "norm_label": "build an evidenceset from a recorded cassette."
     },
     {
@@ -5631,8 +6456,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_fake_llm",
-      "community": 7,
-      "community_name": "ProbeScriptedChatModel",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "fake_llm.py"
     },
     {
@@ -5664,8 +6489,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "deprecated_tests_fake_llm_scriptedchatmodel",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "scriptedchatmodel"
     },
     {
@@ -5675,8 +6500,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "basechatmodel",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "basechatmodel"
     },
     {
@@ -5686,8 +6511,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "deprecated_tests_fake_llm_scriptedchatmodel_llm_type",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "._llm_type()"
     },
     {
@@ -5697,8 +6522,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "deprecated_tests_fake_llm_scriptedchatmodel_bind_tools",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 7,
+      "community_name": "ProbeScriptedChatModel",
       "norm_label": ".bind_tools()"
     },
     {
@@ -5708,8 +6533,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "deprecated_tests_fake_llm_scriptedchatmodel_bound_tool_names",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".bound_tool_names()"
     },
     {
@@ -5840,8 +6665,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_fake_llm_rationale_1",
-      "community": 7,
-      "community_name": "ProbeScriptedChatModel",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "scripted chat model for offline agent tests.  an agent-only architecture has no"
     },
     {
@@ -5862,8 +6687,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "deprecated_tests_fake_llm_rationale_32",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "replays a fixed list of turns, one per invocation.      a turn is `{\"content\": \""
     },
     {
@@ -6016,8 +6841,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "test_agent.py"
     },
     {
@@ -6181,8 +7006,8 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testrelativeglob",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "testrelativeglob"
     },
     {
@@ -6192,8 +7017,8 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testrelativeglob_test_strips_absolute_unix_prefix",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_strips_absolute_unix_prefix()"
     },
     {
@@ -6203,8 +7028,8 @@
       "source_location": "L143",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testrelativeglob_test_strips_codebase_root",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_strips_codebase_root()"
     },
     {
@@ -6214,8 +7039,8 @@
       "source_location": "L147",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testrelativeglob_test_empty_falls_back",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_empty_falls_back()"
     },
     {
@@ -6225,8 +7050,8 @@
       "source_location": "L152",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": "testfiletools"
     },
     {
@@ -6236,8 +7061,8 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_tools_are_scoped_to_their_codebase",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_tools_are_scoped_to_their_codebase()"
     },
     {
@@ -6247,8 +7072,8 @@
       "source_location": "L160",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_search_text_reports_file_and_line",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_search_text_reports_file_and_line()"
     },
     {
@@ -6258,8 +7083,8 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_search_text_says_so_when_nothing_matches",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_search_text_says_so_when_nothing_matches()"
     },
     {
@@ -6269,8 +7094,8 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_read_lines_is_one_indexed_and_inclusive",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_read_lines_is_one_indexed_and_inclusive()"
     },
     {
@@ -6280,8 +7105,8 @@
       "source_location": "L177",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_missing_file_is_reported_not_raised",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_missing_file_is_reported_not_raised()"
     },
     {
@@ -6291,8 +7116,8 @@
       "source_location": "L181",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_product_docs_are_optional",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_product_docs_are_optional()"
     },
     {
@@ -6302,8 +7127,8 @@
       "source_location": "L185",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_absolute_glob_does_not_raise",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_absolute_glob_does_not_raise()"
     },
     {
@@ -6313,8 +7138,8 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_testfiletools_test_search_text_accepts_absolute_file_glob",
-      "community": 45,
-      "community_name": "file_tools",
+      "community": 27,
+      "community_name": "Plan \u2014 SCA Risk Revision (Phase 1)",
       "norm_label": ".test_search_text_accepts_absolute_file_glob()"
     },
     {
@@ -6324,8 +7149,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_agent_rationale_1",
-      "community": 44,
-      "community_name": "test_agent.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "agent loop and toolbelt tests, driven by a scripted model rather than ollama.  t"
     },
     {
@@ -6423,8 +7248,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "deprecated_tests_test_api_a_report",
-      "community": 46,
-      "community_name": "assess",
+      "community": 15,
+      "community_name": "test_baseline.py",
       "norm_label": "a_report()"
     },
     {
@@ -6621,8 +7446,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_models",
-      "community": 4,
-      "community_name": "BaseModel",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "test_models.py"
     },
     {
@@ -6918,8 +7743,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_models_rationale_1",
-      "community": 4,
-      "community_name": "BaseModel",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "contract tests: sbom parsing, blueprint lookup, and purl handling.  these are th"
     },
     {
@@ -6995,8 +7820,8 @@
       "source_location": "L144",
       "_origin": "ast",
       "id": "deprecated_tests_test_pipeline_testwaves",
-      "community": 63,
-      "community_name": "TestWaves",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": "testwaves"
     },
     {
@@ -7006,8 +7831,8 @@
       "source_location": "L145",
       "_origin": "ast",
       "id": "deprecated_tests_test_pipeline_testwaves_test_independent_probes_share_one_wave",
-      "community": 63,
-      "community_name": "TestWaves",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": ".test_independent_probes_share_one_wave()"
     },
     {
@@ -7017,8 +7842,8 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "deprecated_tests_test_pipeline_testwaves_test_a_dependent_probe_waits_for_its_prerequisite",
-      "community": 63,
-      "community_name": "TestWaves",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": ".test_a_dependent_probe_waits_for_its_prerequisite()"
     },
     {
@@ -7028,8 +7853,8 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "deprecated_tests_test_pipeline_testwaves_test_every_probe_is_scheduled_exactly_once",
-      "community": 63,
-      "community_name": "TestWaves",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": ".test_every_probe_is_scheduled_exactly_once()"
     },
     {
@@ -7039,8 +7864,8 @@
       "source_location": "L158",
       "_origin": "ast",
       "id": "deprecated_tests_test_pipeline_testwaves_test_dropping_a_probe_drops_its_dependents",
-      "community": 63,
-      "community_name": "TestWaves",
+      "community": 14,
+      "community_name": "CoreError",
       "norm_label": ".test_dropping_a_probe_drops_its_dependents()"
     },
     {
@@ -7303,8 +8128,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_policy",
-      "community": 6,
-      "community_name": "plan",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "test_policy.py"
     },
     {
@@ -7809,8 +8634,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_policy_rationale_1",
-      "community": 6,
-      "community_name": "plan",
+      "community": 2,
+      "community_name": "BlueprintStore",
       "norm_label": "policy is the only place risk decisions are made, so this is where the rules are"
     },
     {
@@ -7864,8 +8689,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "test_scoring.py"
     },
     {
@@ -7875,8 +8700,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_blueprint",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "blueprint()"
     },
     {
@@ -7886,8 +8711,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_verdict",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "verdict()"
     },
     {
@@ -7897,8 +8722,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_answers_of",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "answers_of()"
     },
     {
@@ -8029,8 +8854,8 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "testadjudicate"
     },
     {
@@ -8040,8 +8865,8 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate_test_without_an_adjudicator_every_metric_falls_back_to_base",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".test_without_an_adjudicator_every_metric_falls_back_to_base()"
     },
     {
@@ -8051,8 +8876,8 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate_test_model_answers_are_used_and_attributed",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".test_model_answers_are_used_and_attributed()"
     },
     {
@@ -8062,8 +8887,8 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate_test_off_vocabulary_answers_are_rejected",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".test_off_vocabulary_answers_are_rejected()"
     },
     {
@@ -8073,8 +8898,8 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate_test_unrequested_metrics_are_ignored",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".test_unrequested_metrics_are_ignored()"
     },
     {
@@ -8084,8 +8909,8 @@
       "source_location": "L176",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate_test_a_clamp_overrides_the_model",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".test_a_clamp_overrides_the_model()"
     },
     {
@@ -8095,8 +8920,8 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate_test_isolation_clamp_overrides_the_model",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".test_isolation_clamp_overrides_the_model()"
     },
     {
@@ -8106,8 +8931,8 @@
       "source_location": "L212",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_testadjudicate_test_an_unavailable_adjudicator_keeps_base_metrics",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": ".test_an_unavailable_adjudicator_keeps_base_metrics()"
     },
     {
@@ -8117,8 +8942,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_scoring_rationale_1",
-      "community": 35,
-      "community_name": "api/__init__.py",
+      "community": 18,
+      "community_name": "test_pipeline.py",
       "norm_label": "scoring tests: the vector value object, metric adjudication, and the arithmetic."
     },
     {
@@ -8139,8 +8964,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_telemetry",
-      "community": 17,
-      "community_name": "conftest.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "test_telemetry.py"
     },
     {
@@ -8183,8 +9008,8 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "deprecated_tests_test_telemetry_testagentconversationlog",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 11,
+      "community_name": "EvidenceUnavailable",
       "norm_label": "testagentconversationlog"
     },
     {
@@ -8194,8 +9019,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "deprecated_tests_test_telemetry_testagentconversationlog_test_records_full_transcript_and_tokens",
-      "community": 3,
-      "community_name": "test_agent.py",
+      "community": 11,
+      "community_name": "EvidenceUnavailable",
       "norm_label": ".test_records_full_transcript_and_tokens()"
     },
     {
@@ -8205,8 +9030,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "deprecated_tests_test_telemetry_testassessmetadata",
-      "community": 17,
-      "community_name": "conftest.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "testassessmetadata"
     },
     {
@@ -8216,8 +9041,8 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "deprecated_tests_test_telemetry_testassessmetadata_test_assess_writes_metadata_and_report",
-      "community": 17,
-      "community_name": "conftest.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": ".test_assess_writes_metadata_and_report()"
     },
     {
@@ -8227,8 +9052,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "deprecated_tests_test_telemetry_rationale_1",
-      "community": 17,
-      "community_name": "conftest.py",
+      "community": 6,
+      "community_name": "plan",
       "norm_label": "scan telemetry: conversation logs, token usage, and metadata.json."
     },
     {
@@ -8290,6 +9115,127 @@
       "community": 33,
       "community_name": "joern-run.sh",
       "norm_label": "sl_logging_level"
+    },
+    {
+      "label": "parser.py",
+      "file_type": "code",
+      "source_file": "samples/_fixtures/python-multihop/app/parser.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_parser",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "parser.py"
+    },
+    {
+      "label": "parse_document()",
+      "file_type": "code",
+      "source_file": "samples/_fixtures/python-multihop/app/parser.py",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_parser_parse_document",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "parse_document()"
+    },
+    {
+      "label": "parse_safely()",
+      "file_type": "code",
+      "source_file": "samples/_fixtures/python-multihop/app/parser.py",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_parser_parse_safely",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "parse_safely()"
+    },
+    {
+      "label": "Final hop: the vulnerable sink, three functions away from the request.",
+      "file_type": "rationale",
+      "source_file": "samples/_fixtures/python-multihop/app/parser.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_parser_rationale_1",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "final hop: the vulnerable sink, three functions away from the request."
+    },
+    {
+      "label": "service.py",
+      "file_type": "code",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_service",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "service.py"
+    },
+    {
+      "label": "handle_upload()",
+      "file_type": "code",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_service_handle_upload",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "handle_upload()"
+    },
+    {
+      "label": "Middle hop: normalises the payload and forwards it to the parser.",
+      "file_type": "rationale",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_service_rationale_1",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "middle hop: normalises the payload and forwards it to the parser."
+    },
+    {
+      "label": "web.py",
+      "file_type": "code",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_web",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "web.py"
+    },
+    {
+      "label": "post",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_web_py_post",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "post"
+    },
+    {
+      "label": "upload()",
+      "file_type": "code",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_web_upload",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "upload()"
+    },
+    {
+      "label": "Entry point: untrusted YAML arrives here and is handed down two more hops.",
+      "file_type": "rationale",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "samples_fixtures_python_multihop_app_web_rationale_1",
+      "community": 36,
+      "community_name": "post",
+      "norm_label": "entry point: untrusted yaml arrives here and is handed down two more hops."
     },
     {
       "label": "_generate.py",
@@ -9374,6 +10320,94 @@
       "norm_label": "vulnerable: image.open on attacker-uploaded files."
     },
     {
+      "label": "gortex_taint_experiment.py",
+      "file_type": "code",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "gortex_taint_experiment.py"
+    },
+    {
+      "label": "blueprint_sinks()",
+      "file_type": "code",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment_blueprint_sinks",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "blueprint_sinks()"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment_py_path",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "path"
+    },
+    {
+      "label": "route_entry_points()",
+      "file_type": "code",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment_route_entry_points",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "route_entry_points()"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment_run",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "run()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment_main",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "main()"
+    },
+    {
+      "label": "Experiment: can gortex CFG facts reproduce the taint evidence S1 needs?  Runs th",
+      "file_type": "rationale",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment_rationale_1",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "experiment: can gortex cfg facts reproduce the taint evidence s1 needs?  runs th"
+    },
+    {
+      "label": "Route handlers, from the contracts layer, as request-controlled entries.",
+      "file_type": "rationale",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "scripts_gortex_taint_experiment_rationale_32",
+      "community": 44,
+      "community_name": "test_agent.py",
+      "norm_label": "route handlers, from the contracts layer, as request-controlled entries."
+    },
+    {
       "label": "run_mcp_joern_sse.py",
       "file_type": "code",
       "source_file": "scripts/run_mcp_joern_sse.py",
@@ -9838,6 +10872,248 @@
       "community": 12,
       "community_name": "test_api.py",
       "norm_label": "smoke tests for v2 workspace + skill discovery (no llm required)."
+    },
+    {
+      "label": "test_gortex_taint.py",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_gortex_taint.py"
+    },
+    {
+      "label": "_stmt()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_stmt",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "_stmt()"
+    },
+    {
+      "label": "StubClient",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_stubclient",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "stubclient"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_stubclient_init",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_py_any",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "any"
+    },
+    {
+      "label": ".source_files()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_stubclient_source_files",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": ".source_files()"
+    },
+    {
+      "label": ".functions()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_stubclient_functions",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": ".functions()"
+    },
+    {
+      "label": ".get_cfg()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_stubclient_get_cfg",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": ".get_cfg()"
+    },
+    {
+      "label": ".search_text()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_stubclient_search_text",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": ".search_text()"
+    },
+    {
+      "label": "test_finds_request_to_sink_in_one_function()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_test_finds_request_to_sink_in_one_function",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_finds_request_to_sink_in_one_function()"
+    },
+    {
+      "label": "test_follows_taint_across_three_functions()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_test_follows_taint_across_three_functions",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_follows_taint_across_three_functions()"
+    },
+    {
+      "label": "test_safe_load_is_not_a_load_sink()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_test_safe_load_is_not_a_load_sink",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_safe_load_is_not_a_load_sink()"
+    },
+    {
+      "label": "test_unrelated_identifier_containing_sink_name_is_not_a_sink()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L125",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_test_unrelated_identifier_containing_sink_name_is_not_a_sink",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_unrelated_identifier_containing_sink_name_is_not_a_sink()"
+    },
+    {
+      "label": "test_only_the_tainted_parameter_is_cited()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L138",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_test_only_the_tainted_parameter_is_cited",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_only_the_tainted_parameter_is_cited()"
+    },
+    {
+      "label": "test_parameter_sink_without_a_caller_is_latent_not_reachable()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L160",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_test_parameter_sink_without_a_caller_is_latent_not_reachable",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_parameter_sink_without_a_caller_is_latent_not_reachable()"
+    },
+    {
+      "label": "test_sink_with_no_cfg_is_reported_as_text_only()",
+      "file_type": "code",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_test_sink_with_no_cfg_is_reported_as_text_only",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "test_sink_with_no_cfg_is_reported_as_text_only()"
+    },
+    {
+      "label": "Unit tests for the composed taint analysis, against a stub gortex client.  These",
+      "file_type": "rationale",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_rationale_1",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "unit tests for the composed taint analysis, against a stub gortex client.  these"
+    },
+    {
+      "label": "Serves canned CFGs so the tests need no daemon.",
+      "file_type": "rationale",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_rationale_30",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "serves canned cfgs so the tests need no daemon."
+    },
+    {
+      "label": "A substring test for sink `yaml.load` also fires on the mitigation.",
+      "file_type": "rationale",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_rationale_113",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "a substring test for sink `yaml.load` also fires on the mitigation."
+    },
+    {
+      "label": "`handle_upload` contains the letters of sink `load`.",
+      "file_type": "rationale",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_rationale_126",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "`handle_upload` contains the letters of sink `load`."
+    },
+    {
+      "label": "A Go handler takes (w, r); only r reaches the sink, so only r is evidence.",
+      "file_type": "rationale",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L139",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_rationale_139",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "a go handler takes (w, r); only r reaches the sink, so only r is evidence."
+    },
+    {
+      "label": "A sink inside an elided closure body must not read as 'not exploitable'.",
+      "file_type": "rationale",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L176",
+      "_origin": "ast",
+      "id": "tests_test_gortex_taint_rationale_176",
+      "community": 35,
+      "community_name": "api/__init__.py",
+      "norm_label": "a sink inside an elided closure body must not read as 'not exploitable'."
     },
     {
       "label": "common_tools.py",
@@ -12310,6 +13586,2008 @@
       "_origin": "ast",
       "source": "agent_pipeline_run_pipeline",
       "target": "agent_evidence_aggregate_evidence",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init",
+      "target": "agent_gortex_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init",
+      "target": "agent_gortex_client_gortexerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init",
+      "target": "agent_gortex_taint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init",
+      "target": "agent_gortex_taint_taintfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init",
+      "target": "agent_gortex_taint_taintstep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_init_rationale_1",
+      "target": "agent_gortex_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L197",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client",
+      "target": "agent_gortex_client_envelope_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client",
+      "target": "agent_gortex_client_gortexerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L206",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client",
+      "target": "agent_gortex_client_unwrap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_rationale_1",
+      "target": "agent_gortex_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_call",
+      "target": "agent_gortex_client_gortexerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_health",
+      "target": "agent_gortex_client_gortexerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexerror",
+      "target": "runtimeerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_rationale_54",
+      "target": "agent_gortex_client_gortexerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "deprecated/core/tools.py",
+      "source_location": "L182",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "deprecated_core_tools_joern_query_sync",
+      "target": "runtimeerror"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_close",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L183",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_contracts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L180",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_def_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_enter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_exit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_functions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_get_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_health",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_is_up",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L189",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_named_query",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L186",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_sast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_search_symbols",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L192",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_search_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_source_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_track",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient",
+      "target": "agent_gortex_client_gortexclient_untrack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_rationale_58",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L34",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_init",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L482",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L34",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_statement",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L34",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_taintfinding",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L34",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_taintstep",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L553",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_text_only_findings",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_main",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_route_entry_points",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_run",
+      "target": "agent_gortex_client_gortexclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_exit",
+      "target": "agent_gortex_client_gortexclient_close",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_health",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_is_up",
+      "target": "agent_gortex_client_gortexclient_health",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L197",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_envelope_text",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_call",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L183",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_contracts",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L180",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_def_use",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_functions",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_get_cfg",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L189",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_named_query",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L186",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_sast",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_search_symbols",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L192",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_search_text",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_source_files",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_track",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_untrack",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L206",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_unwrap",
+      "target": "agent_gortex_client_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_call",
+      "target": "agent_gortex_client_envelope_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_call",
+      "target": "agent_gortex_client_unwrap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L184",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_contracts",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L181",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_def_use",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L162",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_functions",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_get_cfg",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_named_query",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L187",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_sast",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L174",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_search_symbols",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L193",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_search_text",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_source_files",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_track",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L120",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_untrack",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_rationale_102",
+      "target": "agent_gortex_client_gortexclient_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L159",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_gortexclient_functions",
+      "target": "agent_gortex_client_gortexclient_source_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_rationale_123",
+      "target": "agent_gortex_client_gortexclient_source_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L152",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_rationale_152",
+      "target": "agent_gortex_client_gortexclient_functions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "deprecated/core/tools.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "deprecated_core_tools_file_tools",
+      "target": "agent_gortex_client_gortexclient_search_text"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L211",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_unwrap",
+      "target": "agent_gortex_client_envelope_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/client.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_client_rationale_207",
+      "target": "agent_gortex_client_unwrap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L249",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_analyzer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L622",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_dedupe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L482",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_flatten_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L168",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_leaf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_matches_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L189",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_matches_source",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L198",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_param_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L208",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_split_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_statement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_tainted_arg_positions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_taintfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_taintstep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L553",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint",
+      "target": "agent_gortex_taint_text_only_findings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_1",
+      "target": "agent_gortex_taint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "agent_gortex_taint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze",
+      "target": "agent_gortex_taint_taintstep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L427",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_follow_calls",
+      "target": "agent_gortex_taint_taintstep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_67",
+      "target": "agent_gortex_taint_taintstep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_taintstep",
+      "target": "agent_gortex_taint_taintstep_to_dict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L607",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_text_only_findings",
+      "target": "agent_gortex_taint_taintstep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_taintstep_to_dict",
+      "target": "agent_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_flatten_cfg",
+      "target": "agent_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_taintfinding_to_dict",
+      "target": "agent_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L379",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze",
+      "target": "agent_gortex_taint_taintfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L622",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_dedupe",
+      "target": "agent_gortex_taint_taintfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L482",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_taintfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_102",
+      "target": "agent_gortex_taint_taintfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_taintfinding",
+      "target": "agent_gortex_taint_taintfinding_interprocedural",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_taintfinding",
+      "target": "agent_gortex_taint_taintfinding_to_dict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L553",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_text_only_findings",
+      "target": "agent_gortex_taint_taintfinding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L281",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_cfg",
+      "target": "agent_gortex_taint_statement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L427",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_follow_calls",
+      "target": "agent_gortex_taint_statement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_flatten_cfg",
+      "target": "agent_gortex_taint_statement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L284",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_cfg",
+      "target": "agent_gortex_taint_flatten_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_143",
+      "target": "agent_gortex_taint_flatten_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L275",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_load_symbols",
+      "target": "agent_gortex_taint_leaf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L183",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_matches_sink",
+      "target": "agent_gortex_taint_leaf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L169",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_169",
+      "target": "agent_gortex_taint_leaf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L578",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_text_only_findings",
+      "target": "agent_gortex_taint_leaf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L376",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze",
+      "target": "agent_gortex_taint_matches_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L174",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_174",
+      "target": "agent_gortex_taint_matches_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L346",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze",
+      "target": "agent_gortex_taint_matches_source",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_190",
+      "target": "agent_gortex_taint_matches_source",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L333",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze",
+      "target": "agent_gortex_taint_param_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L454",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_follow_calls",
+      "target": "agent_gortex_taint_param_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L199",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_199",
+      "target": "agent_gortex_taint_param_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L209",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_209",
+      "target": "agent_gortex_taint_split_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L238",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_tainted_arg_positions",
+      "target": "agent_gortex_taint_split_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L449",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_follow_calls",
+      "target": "agent_gortex_taint_tainted_arg_positions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L233",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_233",
+      "target": "agent_gortex_taint_tainted_arg_positions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_analyze",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L290",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_analyze_all",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L294",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_analyze_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L281",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L427",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_follow_calls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L269",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_load_symbols",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L278",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer",
+      "target": "agent_gortex_taint_analyzer_symbol_ids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L509",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_analyzer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L516",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_analyzer_load_symbols",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L291",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze_all",
+      "target": "agent_gortex_taint_analyzer_symbol_ids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L535",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_analyzer_symbol_ids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L316",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze",
+      "target": "agent_gortex_taint_analyzer_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L454",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_follow_calls",
+      "target": "agent_gortex_taint_analyzer_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L292",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze_all",
+      "target": "agent_gortex_taint_analyzer_analyze",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L521",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_analyzer_analyze_all",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L296",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze_entry",
+      "target": "agent_gortex_taint_analyzer_analyze",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L520",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_analyzer_analyze_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L295",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_295",
+      "target": "agent_gortex_taint_analyzer_analyze_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L401",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_analyzer_analyze",
+      "target": "agent_gortex_taint_analyzer_follow_calls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L522",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_dedupe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L548",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_find_taint_paths",
+      "target": "agent_gortex_taint_text_only_findings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L492",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_492",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_run",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_finds_request_to_sink_in_one_function",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_follows_taint_across_three_functions",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_only_the_tainted_parameter_is_cited",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L169",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_parameter_sink_without_a_caller_is_latent_not_reachable",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_safe_load_is_not_a_load_sink",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_sink_with_no_cfg_is_reported_as_text_only",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L135",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_unrelated_identifier_containing_sink_name_is_not_a_sink",
+      "target": "agent_gortex_taint_find_taint_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L560",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_560",
+      "target": "agent_gortex_taint_text_only_findings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/gortex/taint.py",
+      "source_location": "L623",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_gortex_taint_rationale_623",
+      "target": "agent_gortex_taint_dedupe",
       "confidence_score": 1.0
     },
     {
@@ -30382,6 +33660,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_main",
+      "target": "deprecated_tests_test_api_client"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "deprecated/tests/test_api.py",
@@ -32936,6 +36226,167 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/parser.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_parser",
+      "target": "samples_fixtures_python_multihop_app_parser_parse_document",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/parser.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_parser",
+      "target": "samples_fixtures_python_multihop_app_parser_parse_safely",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/parser.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_parser_rationale_1",
+      "target": "samples_fixtures_python_multihop_app_parser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_service",
+      "target": "samples_fixtures_python_multihop_app_parser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_service",
+      "target": "samples_fixtures_python_multihop_app_parser_parse_document",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_service_handle_upload",
+      "target": "samples_fixtures_python_multihop_app_parser_parse_document",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_service",
+      "target": "samples_fixtures_python_multihop_app_service_handle_upload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/service.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_service_rationale_1",
+      "target": "samples_fixtures_python_multihop_app_service",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_web",
+      "target": "samples_fixtures_python_multihop_app_service",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_web",
+      "target": "samples_fixtures_python_multihop_app_service_handle_upload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_web_upload",
+      "target": "samples_fixtures_python_multihop_app_service_handle_upload"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_web",
+      "target": "samples_fixtures_python_multihop_app_web_upload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_web_rationale_1",
+      "target": "samples_fixtures_python_multihop_app_web",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "samples/_fixtures/python-multihop/app/web.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "samples_fixtures_python_multihop_app_web_upload",
+      "target": "samples_fixtures_python_multihop_app_web_py_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "samples/_generate.py",
       "source_location": "L26",
       "weight": 1.0,
@@ -34235,6 +37686,144 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment",
+      "target": "scripts_gortex_taint_experiment_blueprint_sinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment",
+      "target": "scripts_gortex_taint_experiment_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment",
+      "target": "scripts_gortex_taint_experiment_route_entry_points",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment",
+      "target": "scripts_gortex_taint_experiment_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_rationale_1",
+      "target": "scripts_gortex_taint_experiment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_blueprint_sinks",
+      "target": "scripts_gortex_taint_experiment_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_run",
+      "target": "scripts_gortex_taint_experiment_blueprint_sinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_main",
+      "target": "scripts_gortex_taint_experiment_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_run",
+      "target": "scripts_gortex_taint_experiment_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_rationale_32",
+      "target": "scripts_gortex_taint_experiment_route_entry_points",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_run",
+      "target": "scripts_gortex_taint_experiment_route_entry_points",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gortex_taint_experiment.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_gortex_taint_experiment_main",
+      "target": "scripts_gortex_taint_experiment_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/run_mcp_joern_sse.py",
       "source_location": "L22",
       "weight": 1.0,
@@ -35088,6 +38677,454 @@
       "_origin": "ast",
       "source": "tests_test_api_v2_rationale_1",
       "target": "tests_test_api_v2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_test_finds_request_to_sink_in_one_function",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_test_follows_taint_across_three_functions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_test_only_the_tainted_parameter_is_cited",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_test_parameter_sink_without_a_caller_is_latent_not_reachable",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_test_safe_load_is_not_a_load_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L175",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_test_sink_with_no_cfg_is_reported_as_text_only",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint",
+      "target": "tests_test_gortex_taint_test_unrelated_identifier_containing_sink_name_is_not_a_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_rationale_1",
+      "target": "tests_test_gortex_taint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_finds_request_to_sink_in_one_function",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_follows_taint_across_three_functions",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_only_the_tainted_parameter_is_cited",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L164",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_parameter_sink_without_a_caller_is_latent_not_reachable",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_safe_load_is_not_a_load_sink",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_sink_with_no_cfg_is_reported_as_text_only",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_unrelated_identifier_containing_sink_name_is_not_a_sink",
+      "target": "tests_test_gortex_taint_stmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_rationale_30",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient",
+      "target": "tests_test_gortex_taint_stubclient_functions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient",
+      "target": "tests_test_gortex_taint_stubclient_get_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient",
+      "target": "tests_test_gortex_taint_stubclient_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient",
+      "target": "tests_test_gortex_taint_stubclient_search_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient",
+      "target": "tests_test_gortex_taint_stubclient_source_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_finds_request_to_sink_in_one_function",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_follows_taint_across_three_functions",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_only_the_tainted_parameter_is_cited",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L161",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_parameter_sink_without_a_caller_is_latent_not_reachable",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_safe_load_is_not_a_load_sink",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_sink_with_no_cfg_is_reported_as_text_only",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_test_unrelated_identifier_containing_sink_name_is_not_a_sink",
+      "target": "tests_test_gortex_taint_stubclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient_init",
+      "target": "tests_test_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient_functions",
+      "target": "tests_test_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient_get_cfg",
+      "target": "tests_test_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient_search_text",
+      "target": "tests_test_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_stubclient_source_files",
+      "target": "tests_test_gortex_taint_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_rationale_113",
+      "target": "tests_test_gortex_taint_test_safe_load_is_not_a_load_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_rationale_126",
+      "target": "tests_test_gortex_taint_test_unrelated_identifier_containing_sink_name_is_not_a_sink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_rationale_139",
+      "target": "tests_test_gortex_taint_test_only_the_tainted_parameter_is_cited",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_gortex_taint.py",
+      "source_location": "L176",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_gortex_taint_rationale_176",
+      "target": "tests_test_gortex_taint_test_sink_with_no_cfg_is_reported_as_text_only",
       "confidence_score": 1.0
     },
     {
@@ -37998,5 +42035,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8ee23219d6458b25cdb1f42e0ef369d9cfe88712"
+  "built_at_commit": "f48b3a9466dce48a6fbda77ffc73e758b537b487"
 }
